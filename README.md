@@ -1,59 +1,48 @@
-# The Clojure Style Guide
+# Guia de estilo Clojure
 
-> Role models are important. <br/>
-> -- Officer Alex J. Murphy / RoboCop
+> Os modelos são importantes. <br/>
+> -- Oficial Alex J. Murphy / RoboCop
 
-This Clojure style guide recommends best practices so that real-world Clojure
-programmers can write code that can be maintained by other real-world Clojure
-programmers. A style guide that reflects real-world usage gets used, and a
+Este guia de estilo recomenda melhores práticas para que programadores Clojure possam escrever códigos e possam ser mantidos por outros programadores. A style guide that reflects real-world usage gets used, and a
 style guide that holds to an ideal that has been rejected by the people it is
-supposed to help risks not getting used at all &mdash; no matter how good it is.
+supposed to help risks not getting used at all &mdash; não importa quão bom ele seja.
 
-The guide is separated into several sections of related rules. I've
-tried to add the rationale behind the rules (if it's omitted, I've
-assumed that it's pretty obvious).
+O guia está dividido em várias seções de regras relacionadas. Eu tentei adicionar toda a lógica por trás das regras (Se for omitido, estou assumindo que é bastante óbvio).
 
-I didn't come up with all the rules out of nowhere; they are mostly
-based on my extensive career as a professional software engineer,
-feedback and suggestions from members of the Clojure community, and
-various highly regarded Clojure programming resources, such as
+Eu não apareci com todas as regras do nada; elas foram feitas principalmente com base na minha extensa carreira como engenheiro de software profissional,
+feedback e sugestões de membros da comunidade Clojure, and various highly regarded Clojure programming resources, como
 ["Clojure Programming"](http://www.clojurebook.com/)
-and ["The Joy of Clojure"](http://joyofclojure.com/).
+e ["The Joy of Clojure"](http://joyofclojure.com/).
 
-The guide is still a work in progress; some sections are missing,
-others are incomplete, some rules are lacking examples, some rules
-don't have examples that illustrate them clearly enough. In due time
-these issues will be addressed &mdash; just keep them in mind for now.
+O guia ainda é um trabalho em andamento; está faltando algumas seções, outras estão incompletas, algumas regras faltam exemplos, outras não tem exemplos que as ilustre bem o suficiente. Estas questões seram abordadas em seu devido tempo &mdash; Apenas mantenha-os em mente por enquanto.
 
-Please note, that the Clojure developing community maintains a list of
-[coding standards for libraries](http://dev.clojure.org/display/community/Library+Coding+Standards),
-too.
+Por favor, notem que a comunidade de desenvolvedores do Clojure também mantém uma [lista de padrões de codificação](http://dev.clojure.org/display/community/Library+Coding+Standards) para as bibliotecas.
 
-You can generate a PDF or an HTML copy of this guide using
-[Pandoc](http://pandoc.org/).
+Você pode gerar uma cópia em PDF ou em HTML deste guia usando o [Pandoc](http://pandoc.org/).
 
-Translations of the guide are available in the following languages:
+Traduções deste guia estão disponíveis também nas seguintes linguagens:
 
-* [Japanese](https://github.com/totakke/clojure-style-guide/blob/ja/README.md)
-* [Korean](https://github.com/kwakbab/clojure-style-guide/blob/master/README-koKO.md)
+* [Inglês](https://github.com/bbatsov/clojure-style-guide)
+* [Japonês](https://github.com/totakke/clojure-style-guide/blob/ja/README.md)
+* [Coreano](https://github.com/kwakbab/clojure-style-guide/blob/master/README-koKO.md)
 
-## Table of Contents
+## Índice
 
-* [Source Code Layout & Organization](#source-code-layout--organization)
-* [Syntax](#syntax)
-* [Naming](#naming)
+* [Disposição do código & Organização](#source-code-layout--organization)
+* [Sintaxe](#syntax)
+* [Nomenclaturas](#naming)
 * [Collections](#collections)
-* [Mutation](#mutation)
+* [Mutações](#mutation)
 * [Strings](#strings)
-* [Exceptions](#exceptions)
+* [Exceções](#exceptions)
 * [Macros](#macros)
-* [Comments](#comments)
-    * [Comment Annotations](#comment-annotations)
-* [Existential](#existential)
-* [Tooling](#tooling)
-* [Testing](#testing)
+* [Comentários](#comments)
+    * [Comentários de anotações](#comment-annotations)
+* [Existencial](#existential)
+* [Ferramentas](#tooling)
+* [Testando](#testing)
 
-## Source Code Layout & Organization
+## Disposição do código & Organização
 
 > Nearly everybody is convinced that every style but their own is
 > ugly and unreadable. Leave out the "but their own" and they're
@@ -61,7 +50,7 @@ Translations of the guide are available in the following languages:
 > -- Jerry Coffin (on indentation)
 
 * <a name="spaces"></a>
-  Use **spaces** for indentation. No hard tabs.
+  Use **espaços** na identação. Não use tab.
 <sup>[[link](#spaces)]</sup>
 
 * <a name="body-indentation"></a>
@@ -74,45 +63,44 @@ forms and macros that introduce local bindings (e.g. `loop`, `let`,
 
 
     ```Clojure
-    ;; good
-    (when something
-      (something-else))
+    ;; bom
+    (when alguma-coisa
+      (outra-coisa))
 
     (with-out-str
-      (println "Hello, ")
-      (println "world!"))
+      (println "Oĺa, ")
+      (println "mundo!"))
 
-    ;; bad - four spaces
-    (when something
-        (something-else))
+    ;; ruim - quatro espaços
+    (when alguma-coisa
+        (outra-coisa))
 
-    ;; bad - one space
+    ;; ruim - um espaço
     (with-out-str
-     (println "Hello, ")
-     (println "world!"))
+     (println "Oĺá, ")
+     (println "mundo!"))
     ```
 
 * <a name="vertically-align-fn-args"></a>
-  Vertically align function (macro) arguments spanning multiple lines.
+Alinhar verticalmente argumentos da função (macro) distribuída em várias linhas.
 <sup>[[link](#vertically-align-fn-args)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (filter even?
             (range 1 10))
 
-    ;; bad
+    ;; ruim
     (filter even?
       (range 1 10))
     ```
 
 * <a name="one-space-indent"></a>
-Use a single space indentation for function (macro) arguments
-when there are no arguments on the same line as the function name.
+Use um único espaço para os argumentos da função quando não há argumentos na mesma linha que o nome da função.
 <sup>[[link](#one-space-indent)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (filter
      even?
      (range 1 10))
@@ -122,7 +110,7 @@ when there are no arguments on the same line as the function name.
      bala
      portokala)
 
-    ;; bad - two-space indent
+    ;; ruim - dois espaços
     (filter
       even?
       (range 1 10))
@@ -134,21 +122,21 @@ when there are no arguments on the same line as the function name.
     ```
 
 * <a name="vertically-align-let-and-map"></a>
-  Vertically align `let` bindings and map keywords.
+  Alinhar verticalmente ligações `let` e keyword maps.
 <sup>[[link](#vertically-align-let-and-map)]</sup>
 
     ```Clojure
-    ;; good
-    (let [thing1 "some stuff"
-          thing2 "other stuff"]
-      {:thing1 thing1
-       :thing2 thing2})
+    ;; bom
+    (let [coisa1 "alguma coisa"
+          coisa2 "outra coisa"]
+      {:coisa1 coisa1
+       :coisa2 coisa2})
 
-    ;; bad
-    (let [thing1 "some stuff"
-      thing2 "other stuff"]
-      {:thing1 thing1
-      :thing2 thing2})
+    ;; ruim
+    (let [coisa1 "alguma coisa"
+      coisa2 "outra coisa"]
+      {:coisa1 coisa1
+      :coisa2 coisa2})
     ```
 
 * <a name="optional-new-line-after-fn-name"></a>
@@ -157,16 +145,16 @@ when there are no arguments on the same line as the function name.
 <sup>[[link](#optional-new-line-after-fn-name)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (defn foo
       [x]
       (bar x))
 
-    ;; good
+    ;; bom
     (defn foo [x]
       (bar x))
 
-    ;; bad
+    ;; ruim
     (defn foo
       [x] (bar x))
     ```
@@ -178,14 +166,14 @@ when there are no arguments on the same line as the function name.
 
 
     ```Clojure
-    ;; good
+    ;; bom
     (defmethod foo :bar [x] (baz x))
 
     (defmethod foo :bar
       [x]
       (baz x))
 
-    ;; bad
+    ;; ruim
     (defmethod foo
       :bar
       [x]
@@ -205,13 +193,13 @@ when there are no arguments on the same line as the function name.
 <sup>[[link](#docstring-after-fn-name)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (defn foo
       "docstring"
       [x]
       (bar x))
 
-    ;; bad
+    ;; ruim
     (defn foo [x]
       "docstring"
       (bar x))
@@ -223,14 +211,14 @@ when there are no arguments on the same line as the function name.
 <sup>[[link](#oneline-short-fn)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (defn foo [x]
       (bar x))
 
-    ;; good for a small function body
+    ;; bom for a small function body
     (defn foo [x] (bar x))
 
-    ;; good for multi-arity functions
+    ;; bom for multi-arity functions
     (defn foo
       ([x] (bar x))
       ([x y]
@@ -238,7 +226,7 @@ when there are no arguments on the same line as the function name.
          (bar x)
          (baz x))))
 
-    ;; bad
+    ;; ruim
     (defn foo
       [x] (if (predicate? x)
             (bar x)
@@ -250,7 +238,7 @@ when there are no arguments on the same line as the function name.
   parameters.<sup>[[link](#multiple-arity-indentation)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (defn foo
       "I have two arities."
       ([x]
@@ -258,7 +246,7 @@ when there are no arguments on the same line as the function name.
       ([x y]
        (+ x y)))
 
-    ;; bad - extra indentation
+    ;; ruim - extra indentation
     (defn foo
       "I have two arities."
       ([x]
@@ -275,7 +263,7 @@ when there are no arguments on the same line as the function name.
   <sup>[[link](#multiple-arity-order)]</sup>
 
     ```Clojure
-    ;; good - it's easy to scan for the nth arity
+    ;; bom - it's easy to scan for the nth arity
     (defn foo
       "I have two arities."
       ([x]
@@ -293,7 +281,7 @@ when there are no arguments on the same line as the function name.
       ([x y z & more]
        (reduce foo (foo x (foo y z)) more)))
 
-    ;; bad - unordered for no apparent reason
+    ;; ruim - unordered for no apparent reason
     (defn foo
       ([x] 1)
       ([x y z] (foo x (foo y z)))
@@ -306,14 +294,14 @@ when there are no arguments on the same line as the function name.
 <sup>[[link](#align-docstring-lines)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (defn foo
       "Hello there. This is
       a multi-line docstring."
       []
       (bar))
 
-    ;; bad
+    ;; ruim
     (defn foo
       "Hello there. This is
     a multi-line docstring."
@@ -343,10 +331,10 @@ and before a closing bracket.
 <sup>[[link](#bracket-spacing)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (foo (bar baz) quux)
 
-    ;; bad
+    ;; ruim
     (foo(bar baz)quux)
     (foo ( bar baz ) quux)
     ```
@@ -359,11 +347,11 @@ and before a closing bracket.
 <sup>[[link](#no-commas-for-seq-literals)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     [1 2 3]
     (1 2 3)
 
-    ;; bad
+    ;; ruim
     [1, 2, 3]
     (1, 2, 3)
     ```
@@ -374,14 +362,14 @@ of commas and line breaks.
 <sup>[[link](#opt-commas-in-map-literals)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     {:name "Bruce Wayne" :alter-ego "Batman"}
 
-    ;; good and arguably a bit more readable
+    ;; bom and arguably a bit more readable
     {:name "Bruce Wayne"
      :alter-ego "Batman"}
 
-    ;; good and arguably more compact
+    ;; bom and arguably more compact
     {:name "Bruce Wayne", :alter-ego "Batman"}
     ```
 
@@ -390,11 +378,11 @@ of commas and line breaks.
 <sup>[[link](#gather-trailing-parens)]</sup>
 
     ```Clojure
-    ;; good; single line
+    ;; bom; single line
     (when something
       (something-else))
 
-    ;; bad; distinct lines
+    ;; ruim; distinct lines
     (when something
       (something-else)
     )
@@ -405,12 +393,12 @@ of commas and line breaks.
 <sup>[[link](#empty-lines-between-top-level-forms)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (def x ...)
 
     (defn foo ...)
 
-    ;; bad
+    ;; ruim
     (def x ...)
     (defn foo ...)
     ```
@@ -418,7 +406,7 @@ of commas and line breaks.
     An exception to the rule is the grouping of related `def`s together.
 
     ```Clojure
-    ;; good
+    ;; bom
     (def min-rows 10)
     (def max-rows 20)
     (def min-cols 15)
@@ -467,11 +455,11 @@ pairwise constructs as found in e.g. `let` and `cond`.
 <sup>[[link](#prefer-require-over-use)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (ns examples.ns
       (:require [clojure.zip :as zip]))
 
-    ;; good
+    ;; bom
     (ns examples.ns
       (:require [clojure.zip :refer [lefts rights]))
 
@@ -479,7 +467,7 @@ pairwise constructs as found in e.g. `let` and `cond`.
     (ns examples.ns
       (:require [clojure.zip :refer :all]))
 
-    ;; bad
+    ;; ruim
     (ns examples.ns
       (:use clojure.zip))
     ```
@@ -489,10 +477,10 @@ pairwise constructs as found in e.g. `let` and `cond`.
 <sup>[[link](#no-single-segment-namespaces)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (ns example.ns)
 
-    ;; bad
+    ;; ruim
     (ns example)
     ```
 
@@ -536,12 +524,12 @@ pairwise constructs as found in e.g. `let` and `cond`.
 <sup>[[link](#pre-post-conditions)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (defn foo [x]
       {:pre [(pos? x)]}
       (bar x))
 
-    ;; bad
+    ;; ruim
     (defn foo [x]
       (if (pos? x)
         (bar x)
@@ -564,7 +552,7 @@ pairwise constructs as found in e.g. `let` and `cond`.
 <sup>[[link](#dont-shadow-clojure-core)]</sup>
 
     ```Clojure
-    ;; bad - you're forced to use clojure.core/map fully qualified inside
+    ;; ruim - you're forced to use clojure.core/map fully qualified inside
     (defn foo [map]
       ...)
     ```
@@ -574,12 +562,12 @@ pairwise constructs as found in e.g. `let` and `cond`.
 <sup>[[link]](#alter-var)</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (def thing 1) ; value of thing is now 1
     ; do some stuff with thing
     (alter-var-root #'thing (constantly nil)) ; value of thing is now nil
 
-    ;; bad
+    ;; ruim
     (def thing 1)
     ; do some stuff with thing
     (def thing nil)
@@ -592,13 +580,13 @@ pairwise constructs as found in e.g. `let` and `cond`.
 <sup>[[link](#nil-punning)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (defn print-seq [s]
       (when (seq s)
         (prn (first s))
         (recur (rest s))))
 
-    ;; bad
+    ;; ruim
     (defn print-seq [s]
       (when-not (empty? s)
         (prn (first s))
@@ -610,10 +598,10 @@ pairwise constructs as found in e.g. `let` and `cond`.
 <sup>[[link](#to-vector)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (vec some-seq)
 
-    ;; bad
+    ;; ruim
     (into [] some-seq)
     ```
 
@@ -622,12 +610,12 @@ pairwise constructs as found in e.g. `let` and `cond`.
 <sup>[[link](#when-instead-of-single-branch-if)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (when pred
       (foo)
       (bar))
 
-    ;; bad
+    ;; ruim
     (if pred
       (do
         (foo)
@@ -639,12 +627,12 @@ pairwise constructs as found in e.g. `let` and `cond`.
 <sup>[[link](#if-let)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (if-let [result (foo x)]
       (something-with result)
       (something-else))
 
-    ;; bad
+    ;; ruim
     (let [result (foo x)]
       (if result
         (something-with result)
@@ -656,12 +644,12 @@ pairwise constructs as found in e.g. `let` and `cond`.
 <sup>[[link](#when-let)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (when-let [result (foo x)]
       (do-something-with result)
       (do-something-more-with result))
 
-    ;; bad
+    ;; ruim
     (let [result (foo x)]
       (when result
         (do-something-with result)
@@ -673,11 +661,11 @@ pairwise constructs as found in e.g. `let` and `cond`.
 <sup>[[link](#if-not)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (if-not pred
       (foo))
 
-    ;; bad
+    ;; ruim
     (if (not pred)
       (foo))
     ```
@@ -687,12 +675,12 @@ pairwise constructs as found in e.g. `let` and `cond`.
 <sup>[[link](#when-not)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (when-not pred
       (foo)
       (bar))
 
-    ;; bad
+    ;; ruim
     (when (not pred)
       (foo)
       (bar))
@@ -703,12 +691,12 @@ pairwise constructs as found in e.g. `let` and `cond`.
 <sup>[[link](#when-not-instead-of-single-branch-if-not)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (when-not pred
       (foo)
       (bar))
 
-    ;; bad
+    ;; ruim
     (if-not pred
       (do
         (foo)
@@ -720,10 +708,10 @@ pairwise constructs as found in e.g. `let` and `cond`.
 <sup>[[link](#not-equal)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (not= foo bar)
 
-    ;; bad
+    ;; ruim
     (not (= foo bar))
     ```
 
@@ -732,7 +720,7 @@ pairwise constructs as found in e.g. `let` and `cond`.
 <sup>[[link](#printf)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (printf "Hello, %s!\n" name)
 
     ;; ok
@@ -745,10 +733,10 @@ pairwise constructs as found in e.g. `let` and `cond`.
 <sup>[[link](#multiple-arity-of-gt-and-ls-fns)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (< 5 x 10)
 
-    ;; bad
+    ;; ruim
     (and (> x 5) (< x 10))
     ```
 
@@ -757,10 +745,10 @@ pairwise constructs as found in e.g. `let` and `cond`.
 <sup>[[link](#single-param-fn-literal)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     #(Math/round %)
 
-    ;; bad
+    ;; ruim
     #(Math/round %1)
     ```
 
@@ -769,10 +757,10 @@ pairwise constructs as found in e.g. `let` and `cond`.
 <sup>[[link](#multiple-params-fn-literal)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     #(Math/pow %1 %2)
 
-    ;; bad
+    ;; ruim
     #(Math/pow % %2)
     ```
 
@@ -781,10 +769,10 @@ pairwise constructs as found in e.g. `let` and `cond`.
 <sup>[[link](#no-useless-anonymous-fns)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (filter even? (range 1 10))
 
-    ;; bad
+    ;; ruim
     (filter #(even? %) (range 1 10))
     ```
 
@@ -794,12 +782,12 @@ pairwise constructs as found in e.g. `let` and `cond`.
 <sup>[[link](#no-multiple-forms-fn-literals)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (fn [x]
       (println x)
       (* x 2))
 
-    ;; bad (you need an explicit do form)
+    ;; ruim (you need an explicit do form)
     #(do (println %)
          (* % 2))
     ```
@@ -809,10 +797,10 @@ pairwise constructs as found in e.g. `let` and `cond`.
 <sup>[[link](#complement)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (filter (complement some-pred?) coll)
 
-    ;; bad
+    ;; ruim
     (filter #(not (some-pred? %)) coll)
     ```
 
@@ -826,7 +814,7 @@ pairwise constructs as found in e.g. `let` and `cond`.
     ```Clojure
     ;; Assuming `(:require [clojure.string :as str])`...
 
-    ;; good
+    ;; bom
     (map #(str/capitalize (str/trim %)) ["top " " test "])
 
     ;; better
@@ -838,7 +826,7 @@ pairwise constructs as found in e.g. `let` and `cond`.
 <sup>[[link](#partial)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (map #(+ 5 %) (range 1 10))
 
     ;; (arguably) better
@@ -851,7 +839,7 @@ pairwise constructs as found in e.g. `let` and `cond`.
 <sup>[[link](#threading-macros)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (-> [1 2 3]
         reverse
         (conj 4)
@@ -861,7 +849,7 @@ pairwise constructs as found in e.g. `let` and `cond`.
     (prn (conj (reverse [1 2 3])
                4))
 
-    ;; good
+    ;; bom
     (->> (range 1 10)
          (filter even?)
          (map (partial * 2)))
@@ -876,13 +864,13 @@ pairwise constructs as found in e.g. `let` and `cond`.
 <sup>[[link](#else-keyword-in-cond)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (cond
       (< n 0) "negative"
       (> n 0) "positive"
       :else "zero"))
 
-    ;; bad
+    ;; ruim
     (cond
       (< n 0) "negative"
       (> n 0) "positive"
@@ -895,7 +883,7 @@ pairwise constructs as found in e.g. `let` and `cond`.
 <sup>[[link](#condp)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (cond
       (= x 10) :ten
       (= x 20) :twenty
@@ -916,7 +904,7 @@ compile-time constants.
 <sup>[[link](#case)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (cond
       (= x 10) :ten
       (= x 20) :twenty
@@ -944,7 +932,7 @@ hints for the pairwise grouping with comments or empty lines.
 <sup>[[link](#shor-forms-in-cond)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (cond
       (test1) (action1)
       (test2) (action2)
@@ -975,16 +963,16 @@ hints for the pairwise grouping with comments or empty lines.
 <sup>[[link](#set-as-predicate)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (remove #{1} [0 1 2 3 4 5])
 
-    ;; bad
+    ;; ruim
     (remove #(= % 1) [0 1 2 3 4 5])
 
-    ;; good
+    ;; bom
     (count (filter #{\a \e \i \o \u} "mary had a little lamb"))
 
-    ;; bad
+    ;; ruim
     (count (filter #(or (= % \a)
                         (= % \e)
                         (= % \i)
@@ -1007,10 +995,10 @@ hints for the pairwise grouping with comments or empty lines.
 <sup>[[link](#list-star-instead-of-nested-cons)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (list* 1 2 3 [4 5])
 
-    ;; bad
+    ;; ruim
     (cons 1 (cons 2 (cons 3 [4 5])))
     ```
 
@@ -1020,38 +1008,38 @@ hints for the pairwise grouping with comments or empty lines.
 
     ```Clojure
     ;;; object creation
-    ;; good
+    ;; bom
     (java.util.ArrayList. 100)
 
-    ;; bad
+    ;; ruim
     (new java.util.ArrayList 100)
 
     ;;; static method invocation
-    ;; good
+    ;; bom
     (Math/pow 2 10)
 
-    ;; bad
+    ;; ruim
     (. Math pow 2 10)
 
     ;;; instance method invocation
-    ;; good
+    ;; bom
     (.substring "hello" 1 3)
 
-    ;; bad
+    ;; ruim
     (. "hello" substring 1 3)
 
     ;;; static field access
-    ;; good
+    ;; bom
     Integer/MAX_VALUE
 
-    ;; bad
+    ;; ruim
     (. Integer MAX_VALUE)
 
     ;;; instance field access
-    ;; good
+    ;; bom
     (.someField some-object)
 
-    ;; bad
+    ;; ruim
     (. some-object someField)
     ```
 
@@ -1061,10 +1049,10 @@ hints for the pairwise grouping with comments or empty lines.
 <sup>[[link](#compact-metadata-notation-for-true-flags)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (def ^:private a 5)
 
-    ;; bad
+    ;; ruim
     (def ^{:private true} a 5)
     ```
 
@@ -1073,12 +1061,12 @@ hints for the pairwise grouping with comments or empty lines.
 <sup>[[link](#private)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (defn- private-fun [] ...)
 
     (def ^:private private-var ...)
 
-    ;; bad
+    ;; ruim
     (defn private-fun [] ...) ; not private at all
 
     (defn ^:private private-fun [] ...) ; overly verbose
@@ -1128,11 +1116,11 @@ hints for the pairwise grouping with comments or empty lines.
 <sup>[[link](#lisp-case)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (def some-var ...)
     (defn some-fun ...)
 
-    ;; bad
+    ;; ruim
     (def someVar ...)
     (defn somefun ...)
     (def some_fun ...)
@@ -1150,10 +1138,10 @@ hints for the pairwise grouping with comments or empty lines.
 <sup>[[link](#pred-with-question-mark)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (defn palindrome? ...)
 
-    ;; bad
+    ;; ruim
     (defn palindrome-p ...) ; Common Lisp style
     (defn is-palindrome ...) ; Java style
     ```
@@ -1168,7 +1156,7 @@ hints for the pairwise grouping with comments or empty lines.
 <sup>[[link](#arrow-instead-of-to)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (defn f->c ...)
 
     ;; not so good
@@ -1180,10 +1168,10 @@ hints for the pairwise grouping with comments or empty lines.
 <sup>[[link](#earmuffs-for-dynamic-vars)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (def ^:dynamic *a* 10)
 
-    ;; bad
+    ;; ruim
     (def ^:dynamic a 10)
     ```
 
@@ -1198,14 +1186,14 @@ hints for the pairwise grouping with comments or empty lines.
 <sup>[[link](#underscore-for-unused-bindings)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (let [[a b _ c] [1 2 3 4]]
       (println a b c))
 
     (dotimes [_ 3]
       (println "Hello!"))
 
-    ;; bad
+    ;; ruim
     (let [[a b c d] [1 2 3 4]]
       (println a b d))
 
@@ -1251,10 +1239,10 @@ hints for the pairwise grouping with comments or empty lines.
 <sup>[[link](#keywords-for-hash-keys)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     {:name "Bruce" :age 30}
 
-    ;; bad
+    ;; ruim
     {"name" "Bruce" "age" 30}
     ```
 
@@ -1265,12 +1253,12 @@ hints for the pairwise grouping with comments or empty lines.
 <sup>[[link](#literal-col-syntax)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     [1 2 3]
     #{1 2 3}
     (hash-set (func1) (func2)) ; values determined at runtime
 
-    ;; bad
+    ;; ruim
     (vector 1 2 3)
     (hash-set 1 2 3)
     #{(func1) (func2)} ; will throw runtime exception if (func1) = (func2)
@@ -1288,13 +1276,13 @@ hints for the pairwise grouping with comments or empty lines.
     ```Clojure
     (def m {:name "Bruce" :age 30})
 
-    ;; good
+    ;; bom
     (:name m)
 
     ;; more verbose than necessary
     (get m :name)
 
-    ;; bad - susceptible to NullPointerException
+    ;; ruim - susceptible to NullPointerException
     (m :name)
     ```
 
@@ -1303,10 +1291,10 @@ hints for the pairwise grouping with comments or empty lines.
 <sup>[[link](#colls-as-fns)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (filter #{\a \e \o \i \u} "this is a test")
 
-    ;; bad - too ugly to share
+    ;; ruim - too ugly to share
     ```
 
 * <a name="keywords-as-fns"></a>
@@ -1348,10 +1336,10 @@ transaction.
     ```Clojure
     (def r (ref 0))
 
-    ;; good
+    ;; bom
     (dosync (alter r + 5))
 
-    ;; bad
+    ;; ruim
     (dosync (ref-set r 5))
     ```
 
@@ -1390,7 +1378,7 @@ as small as possible.
     ```Clojure
     (def a (atom 0))
 
-    ;; good
+    ;; bom
     (swap! a + 5)
 
     ;; not as good
@@ -1404,10 +1392,10 @@ as small as possible.
 <sup>[[link](#prefer-clojure-string-over-interop)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (clojure.string/upper-case "bruce")
 
-    ;; bad
+    ;; ruim
     (.toUpperCase "bruce")
     ```
 
@@ -1509,7 +1497,7 @@ and the text that follows it.
 <sup>[[link](#no-superfluous-comments)]</sup>
 
     ```Clojure
-    ;; bad
+    ;; ruim
     (inc counter) ; increments counter by one
     ```
 
@@ -1524,10 +1512,10 @@ you need to comment out a particular form.
 <sup>[[link](#dash-underscore-reader-macro)]</sup>
 
     ```Clojure
-    ;; good
+    ;; bom
     (+ foo #_(bar x) delta)
 
-    ;; bad
+    ;; ruim
     (+ foo
        ;; (bar x)
        delta)
@@ -1658,10 +1646,10 @@ in your endeavor to write idiomatic Clojure code.
    with `deftest` and name them `something-test`. For example:
 
    ```clojure
-   ;; good
+   ;; bom
    (deftest something-test ...)
 
-   ;; bad
+   ;; ruim
    (deftest something-tests ...)
    (deftest test-something ...)
    (deftest something ...)
