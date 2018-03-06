@@ -1628,42 +1628,41 @@ in your endeavor to write idiomatic Clojure code.
   search for patterns of code for which there might exist a more idiomatic
   function or macro.
 
-## Testing
+## Testes
 
  * <a name="test-directory-structure"></a>
-   Store your tests in a separate directory, typically `test/yourproject/` (as
-   opposed to `src/yourproject/`). Your build tool is responsible for making
-   them available in the contexts where they are necessary; most templates
-   will do this for you automatically.
+   Armazene seus testes em um diretório separado, normalmente `test/seuprojeto/` (em
+   oposição a `src/seuprojeto/`). Sua ferramenta de compilação é responsável por
+   disponibilizá-los nos contextos onde são necessários; a maioria dos modelos
+   vai fazer isso automaticamente para você.
    <sup>[[link](#test-directory-structure)]</sup>
 
  * <a name="test-ns-naming"></a>
-   Name your ns `yourproject.something-test`, a file which usually lives in
-   `test/yourproject/something_test.clj` (or `.cljc`, `cljs`).
+  Nomeie seu ns `seuprojeto.algumacoisa-test`, um arquivo que geralmente está em
+   `test/seuprojeto/algumacoisa_test.clj` (ou `.cljc`, `cljs`).
    <sup>[[link](#test-ns-naming)]</sup>
 
- * <a name="test-naming"></a> When using `clojure.test`, define your tests
-   with `deftest` and name them `something-test`. For example:
+ * <a name="test-naming"></a> Ao usar `clojure.test`, defina seus testes
+   com `deftest` and nomeie com `algumacoisa-test`. For example:
 
    ```clojure
    ;; bom
-   (deftest something-test ...)
+   (deftest algumacoisa-test ...)
 
    ;; ruim
-   (deftest something-tests ...)
-   (deftest test-something ...)
-   (deftest something ...)
+   (deftest algumacoisa-tests ...)
+   (deftest test-algumacoisa ...)
+   (deftest algumacoisa ...)
    ```
 
    <sup>[[link](#test-naming)]</sup>
 
 
-# Contributing
+# Contribuindo
 
-Nothing written in this guide is set in stone. It's my desire to work
-together with everyone interested in Clojure coding style, so that we could
-ultimately create a resource that will be beneficial to the entire Clojure
-community.
+Nada de escrito neste guia é definitivo. É meu desejo trabalhar em conjunto com
+todos os interessados no estilo de codificação em Clojure, para que possamos
+criar um recurso que seja benéfico para toda a comunidade Clojure.
 
 Feel free to open tickets or send pull requests with improvements. Thanks in
 advance for your help!
@@ -1671,21 +1670,20 @@ advance for your help!
 You can also support the style guide with financial
 contributions via [gittip](https://www.gittip.com/bbatsov).
 
-[![Support via Gittip](https://rawgithub.com/twolfson/gittip-badge/0.2.0/dist/gittip.png)](https://www.gittip.com/bbatsov)
+[![Apoie via Gittip](https://rawgithub.com/twolfson/gittip-badge/0.2.0/dist/gittip.png)](https://www.gittip.com/bbatsov)
 
-# License
+# Licença
 
 ![Creative Commons License](http://i.creativecommons.org/l/by/3.0/88x31.png)
-This work is licensed under a
+Este trabalho é licenciado sob
 [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/deed.en_US)
 
-# Spread the Word
+# Espalhe a Palavra
 
-A community-driven style guide is of little use to a community that
-doesn't know about its existence. Tweet about the guide, share it with
-your friends and colleagues. Every comment, suggestion or opinion we
-get makes the guide just a little bit better. And we want to have the
-best possible guide, don't we?
+Um guia de estilo dirigido pela comunidade é de pouca utilidade para uma
+comunidade que não sabe sobre sua existência. Tweet sobre o guia, compartilhe
+com seus amigos e colegas. Todos os comentários, sugestões ou opiniões que nós
+recebemos faz o guia um pouco melhor. E queremos ter o melhor guia possível, não é?
 
-Cheers,<br/>
+Felicidades,<br/>
 [Bozhidar](https://twitter.com/bbatsov)
