@@ -1601,32 +1601,31 @@ you need to comment out a particular form.
   sure to document them in your project's `README` or similar.
 <sup>[[link](#document-annotations)]</sup>
 
-## Existential
+## Existencial
 
 * <a name="be-functional"></a>
-  Code in a functional way, using mutation only when it makes sense.
+  Codifique de maneira funcional, usando mutação somente quando faz sentido.
 <sup>[[link](#be-functional)]</sup>
 
 * <a name="be-consistent"></a>
-  Be consistent. In an ideal world, be consistent with these guidelines.
+  Seja consistente. Em um mundo ideal, seja consistente com essas diretrizes.
 <sup>[[link](#be-consistent)]</sup>
 
 * <a name="common-sense"></a>
-  Use common sense.
+  Use o senso comum.
 <sup>[[link](#common-sense)]</sup>
 
-## Tooling
+## Ferramentas
 
-There are some tools created by the Clojure community that might aid you
-in your endeavor to write idiomatic Clojure code.
+Existem algumas ferramentas criadas pela comunidade Clojure que podem ajudá-lo
+em seu esforço em escrever o código de Clojure idiomático.
 
-* [Slamhound](https://github.com/technomancy/slamhound) is a tool that will
-  automatically generate proper `ns` declarations from your existing code.
+* [Slamhound](https://github.com/technomancy/slamhound) é uma ferramenta que
+  gerará automaticamente declarações `ns` adequadas a partir do seu código existente.
 
-* [kibit](https://github.com/jonase/kibit) is a static code analyzer for
-  Clojure which uses [core.logic](https://github.com/clojure/core.logic) to
-  search for patterns of code for which there might exist a more idiomatic
-  function or macro.
+* [kibit](https://github.com/jonase/kibit) é um analisador de código estático
+  para Clojure que usa [core.logic](https://github.com/clojure/core.logic) para
+  procurar padrões de código para os quais pode haver uma função ou macro mais idiomático.
 
 ## Testes
 
@@ -1664,11 +1663,11 @@ Nada de escrito neste guia é definitivo. É meu desejo trabalhar em conjunto co
 todos os interessados no estilo de codificação em Clojure, para que possamos
 criar um recurso que seja benéfico para toda a comunidade Clojure.
 
-Feel free to open tickets or send pull requests with improvements. Thanks in
-advance for your help!
+Sinta-se à vontade para abrir tickets ou enviar pull requests com melhorias.
+Agradeço antecipadamente por sua ajuda!
 
-You can also support the style guide with financial
-contributions via [gittip](https://www.gittip.com/bbatsov).
+
+Você também pode apoiar o guia de estilo com contribuições financeiras via [gittip](https://www.gittip.com/bbatsov).
 
 [![Apoie via Gittip](https://rawgithub.com/twolfson/gittip-badge/0.2.0/dist/gittip.png)](https://www.gittip.com/bbatsov)
 
