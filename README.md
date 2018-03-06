@@ -140,8 +140,8 @@ Use um único espaço para os argumentos da função quando não há argumentos 
     ```
 
 * <a name="optional-new-line-after-fn-name"></a>
-  Optionally omit the new line between the function name and argument
-  vector for `defn` when there is no docstring.
+  Opcionalmente, omita a nova linha entre o nome da função e o vetor de
+  argumento para `defn` quando não há docstring.
 <sup>[[link](#optional-new-line-after-fn-name)]</sup>
 
     ```Clojure
@@ -160,8 +160,8 @@ Use um único espaço para os argumentos da função quando não há argumentos 
     ```
 
 * <a name="multimethod-dispatch-val-placement"></a>
-  Place the `dispatch-val` of a multimethod on the same line as the
-  function name.
+  Coloque a `dispatch-val` de um método múltiplo na mesma linha que o nome da
+  função.
 <sup>[[link](#multimethod-dispatch-val-placement)]</sup>
 
 
@@ -206,8 +206,8 @@ Use um único espaço para os argumentos da função quando não há argumentos 
     ```
 
 * <a name="oneline-short-fn"></a>
-  Optionally omit the new line between the argument vector and a short
-  function body.
+  Opcionalmente, omita a nova linha entre o vetor de argumento e um corpo de
+  função curto.
 <sup>[[link](#oneline-short-fn)]</sup>
 
     ```Clojure
@@ -234,8 +234,8 @@ Use um único espaço para os argumentos da função quando não há argumentos 
     ```
 
 * <a name="multiple-arity-indentation"></a>
-  Indent each arity form of a function definition vertically aligned with its
-  parameters.<sup>[[link](#multiple-arity-indentation)]</sup>
+  Indente cada forma de aridade de uma definição de função alinhada verticalmente
+  com seus parâmetros.<sup>[[link](#multiple-arity-indentation)]</sup>
 
     ```Clojure
     ;; bom
@@ -290,7 +290,7 @@ Use um único espaço para os argumentos da função quando não há argumentos 
     ```
 
 * <a name="align-docstring-lines"></a>
-  Indent each line of multi-line docstrings.
+  Indente cada linha de docstrings com mais de uma linha.
 <sup>[[link](#align-docstring-lines)]</sup>
 
     ```Clojure
