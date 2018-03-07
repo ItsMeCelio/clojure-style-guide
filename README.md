@@ -140,8 +140,8 @@ Use um único espaço para os argumentos da função quando não há argumentos 
     ```
 
 * <a name="optional-new-line-after-fn-name"></a>
-  Optionally omit the new line between the function name and argument
-  vector for `defn` when there is no docstring.
+  Opcionalmente, omita a nova linha entre o nome da função e o vetor de
+  argumento para `defn` quando não há docstring.
 <sup>[[link](#optional-new-line-after-fn-name)]</sup>
 
     ```Clojure
@@ -160,8 +160,8 @@ Use um único espaço para os argumentos da função quando não há argumentos 
     ```
 
 * <a name="multimethod-dispatch-val-placement"></a>
-  Place the `dispatch-val` of a multimethod on the same line as the
-  function name.
+  Coloque a `dispatch-val` de um método múltiplo na mesma linha que o nome da
+  função.
 <sup>[[link](#multimethod-dispatch-val-placement)]</sup>
 
 
@@ -206,8 +206,8 @@ Use um único espaço para os argumentos da função quando não há argumentos 
     ```
 
 * <a name="oneline-short-fn"></a>
-  Optionally omit the new line between the argument vector and a short
-  function body.
+  Opcionalmente, omita a nova linha entre o vetor de argumento e um corpo de
+  função curto.
 <sup>[[link](#oneline-short-fn)]</sup>
 
     ```Clojure
@@ -234,8 +234,8 @@ Use um único espaço para os argumentos da função quando não há argumentos 
     ```
 
 * <a name="multiple-arity-indentation"></a>
-  Indent each arity form of a function definition vertically aligned with its
-  parameters.<sup>[[link](#multiple-arity-indentation)]</sup>
+  Indente cada forma de aridade de uma definição de função alinhada verticalmente
+  com seus parâmetros.<sup>[[link](#multiple-arity-indentation)]</sup>
 
     ```Clojure
     ;; bom
@@ -290,7 +290,7 @@ Use um único espaço para os argumentos da função quando não há argumentos 
     ```
 
 * <a name="align-docstring-lines"></a>
-  Indent each line of multi-line docstrings.
+  Indente cada linha de docstrings com mais de uma linha.
 <sup>[[link](#align-docstring-lines)]</sup>
 
     ```Clojure
@@ -1601,91 +1601,88 @@ you need to comment out a particular form.
   sure to document them in your project's `README` or similar.
 <sup>[[link](#document-annotations)]</sup>
 
-## Existential
+## Existencial
 
 * <a name="be-functional"></a>
-  Code in a functional way, using mutation only when it makes sense.
+  Codifique de maneira funcional, usando mutação somente quando faz sentido.
 <sup>[[link](#be-functional)]</sup>
 
 * <a name="be-consistent"></a>
-  Be consistent. In an ideal world, be consistent with these guidelines.
+  Seja consistente. Em um mundo ideal, seja consistente com essas diretrizes.
 <sup>[[link](#be-consistent)]</sup>
 
 * <a name="common-sense"></a>
-  Use common sense.
+  Use o senso comum.
 <sup>[[link](#common-sense)]</sup>
 
-## Tooling
+## Ferramentas
 
-There are some tools created by the Clojure community that might aid you
-in your endeavor to write idiomatic Clojure code.
+Existem algumas ferramentas criadas pela comunidade Clojure que podem ajudá-lo
+em seu esforço em escrever o código de Clojure idiomático.
 
-* [Slamhound](https://github.com/technomancy/slamhound) is a tool that will
-  automatically generate proper `ns` declarations from your existing code.
+* [Slamhound](https://github.com/technomancy/slamhound) é uma ferramenta que
+  gerará automaticamente declarações `ns` adequadas a partir do seu código existente.
 
-* [kibit](https://github.com/jonase/kibit) is a static code analyzer for
-  Clojure which uses [core.logic](https://github.com/clojure/core.logic) to
-  search for patterns of code for which there might exist a more idiomatic
-  function or macro.
+* [kibit](https://github.com/jonase/kibit) é um analisador de código estático
+  para Clojure que usa [core.logic](https://github.com/clojure/core.logic) para
+  procurar padrões de código para os quais pode haver uma função ou macro mais idiomático.
 
-## Testing
+## Testes
 
  * <a name="test-directory-structure"></a>
-   Store your tests in a separate directory, typically `test/yourproject/` (as
-   opposed to `src/yourproject/`). Your build tool is responsible for making
-   them available in the contexts where they are necessary; most templates
-   will do this for you automatically.
+   Armazene seus testes em um diretório separado, normalmente `test/seuprojeto/` (em
+   oposição a `src/seuprojeto/`). Sua ferramenta de compilação é responsável por
+   disponibilizá-los nos contextos onde são necessários; a maioria dos modelos
+   vai fazer isso automaticamente para você.
    <sup>[[link](#test-directory-structure)]</sup>
 
  * <a name="test-ns-naming"></a>
-   Name your ns `yourproject.something-test`, a file which usually lives in
-   `test/yourproject/something_test.clj` (or `.cljc`, `cljs`).
+  Nomeie seu ns `seuprojeto.algumacoisa-test`, um arquivo que geralmente está em
+   `test/seuprojeto/algumacoisa_test.clj` (ou `.cljc`, `cljs`).
    <sup>[[link](#test-ns-naming)]</sup>
 
- * <a name="test-naming"></a> When using `clojure.test`, define your tests
-   with `deftest` and name them `something-test`. For example:
+ * <a name="test-naming"></a> Ao usar `clojure.test`, defina seus testes
+   com `deftest` and nomeie com `algumacoisa-test`. For example:
 
    ```clojure
    ;; bom
-   (deftest something-test ...)
+   (deftest algumacoisa-test ...)
 
    ;; ruim
-   (deftest something-tests ...)
-   (deftest test-something ...)
-   (deftest something ...)
+   (deftest algumacoisa-tests ...)
+   (deftest test-algumacoisa ...)
+   (deftest algumacoisa ...)
    ```
 
    <sup>[[link](#test-naming)]</sup>
 
 
-# Contributing
+# Contribuindo
 
-Nothing written in this guide is set in stone. It's my desire to work
-together with everyone interested in Clojure coding style, so that we could
-ultimately create a resource that will be beneficial to the entire Clojure
-community.
+Nada de escrito neste guia é definitivo. É meu desejo trabalhar em conjunto com
+todos os interessados no estilo de codificação em Clojure, para que possamos
+criar um recurso que seja benéfico para toda a comunidade Clojure.
 
-Feel free to open tickets or send pull requests with improvements. Thanks in
-advance for your help!
+Sinta-se à vontade para abrir tickets ou enviar pull requests com melhorias.
+Agradeço antecipadamente por sua ajuda!
 
-You can also support the style guide with financial
-contributions via [gittip](https://www.gittip.com/bbatsov).
 
-[![Support via Gittip](https://rawgithub.com/twolfson/gittip-badge/0.2.0/dist/gittip.png)](https://www.gittip.com/bbatsov)
+Você também pode apoiar o guia de estilo com contribuições financeiras via [gittip](https://www.gittip.com/bbatsov).
 
-# License
+[![Apoie via Gittip](https://rawgithub.com/twolfson/gittip-badge/0.2.0/dist/gittip.png)](https://www.gittip.com/bbatsov)
+
+# Licença
 
 ![Creative Commons License](http://i.creativecommons.org/l/by/3.0/88x31.png)
-This work is licensed under a
+Este trabalho é licenciado sob
 [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/deed.en_US)
 
-# Spread the Word
+# Espalhe a Palavra
 
-A community-driven style guide is of little use to a community that
-doesn't know about its existence. Tweet about the guide, share it with
-your friends and colleagues. Every comment, suggestion or opinion we
-get makes the guide just a little bit better. And we want to have the
-best possible guide, don't we?
+Um guia de estilo dirigido pela comunidade é de pouca utilidade para uma
+comunidade que não sabe sobre sua existência. Tweet sobre o guia, compartilhe
+com seus amigos e colegas. Todos os comentários, sugestões ou opiniões que nós
+recebemos faz o guia um pouco melhor. E queremos ter o melhor guia possível, não é?
 
-Cheers,<br/>
+Felicidades,<br/>
 [Bozhidar](https://twitter.com/bbatsov)
