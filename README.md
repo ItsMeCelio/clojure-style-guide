@@ -1388,7 +1388,8 @@ as small as possible.
 ## Strings
 
 * <a name="prefer-clojure-string-over-interop"></a>
-  Prefer string manipulation functions from `clojure.string` over Java interop or rolling your own.
+  Prefira as funções de manipulação de strings do `clojure.string` do que a
+  interoperabilidade Java ou escrever sua própria.
 <sup>[[link](#prefer-clojure-string-over-interop)]</sup>
 
     ```Clojure
@@ -1399,49 +1400,45 @@ as small as possible.
     (.toUpperCase "bruce")
     ```
 
-## Exceptions
+## Exceções
 
 * <a name="reuse-existing-exception-types"></a>
-  Reuse existing exception types. Idiomatic Clojure code &mdash; when it does
-  throw an exception &mdash; throws an exception of a standard type
-  (e.g. `java.lang.IllegalArgumentException`,
-  `java.lang.UnsupportedOperationException`,
-  `java.lang.IllegalStateException`, `java.io.IOException`).
+  Reutilize os tipos de exceção existentes. O código idiomático Clojure &mdash;
+  quando lança uma exceção &mdash; lança uma exceção de um tipo padrão (por exemplo, `java.lang.IllegalArgumentException`, `java.lang.UnsupportedOperationException`, `java.lang.IllegalStateException`, `java.io.IOException`).
 <sup>[[link](#reuse-existing-exception-types)]</sup>
 
 * <a name="prefer-with-open-over-finally"></a>
-  Favor `with-open` over `finally`.
+  Prefira `with-open` a `finally`.
 <sup>[[link](#prefer-with-open-over-finally)]</sup>
 
 ## Macros
 
 * <a name="dont-write-macro-if-fn-will-do"></a>
-  Don't write a macro if a function will do.
+  Não escreva uma macro se uma função faz o mesmo.
 <sup>[[link](#dont-write-macro-if-fn-will-do)]</sup>
 
 * <a name="write-macro-usage-before-writing-the-macro"></a>
-  Create an example of a macro usage first and the macro afterwards.
+   Crie um exemplo de uso de macro primeiro e depois a macro.
 <sup>[[link](#write-macro-usage-before-writing-the-macro)]</sup>
 
 * <a name="break-complicated-macros"></a>
-  Break complicated macros into smaller functions whenever possible.
+  Quebre as macros complicadas em funções menores sempre que possível.
 <sup>[[link](#break-complicated-macros)]</sup>
 
 * <a name="macros-as-syntactic-sugar"></a>
-  A macro should usually just provide syntactic sugar and the core of
-  the macro should be a plain function. Doing so will improve
-  composability.
+  Uma macro geralmente deve fornecer apenas açúcar sintático e o núcleo da macro
+  deve ser uma função simples. Isso aumentará a composibilidade.
 <sup>[[link](#macros-as-syntactic-sugar)]</sup>
 
 * <a name="syntax-quoted-forms"></a>
-  Prefer syntax-quoted forms over building lists manually.
+  Prefira formulários entre aspas de sintaxe a construir listas manualmente.
 <sup>[[link](#syntax-quoted-forms)]</sup>
 
 ## Comentários
 
 > Um bom código é sua melhor documentação. Quando estiver prestes a adicionar um
 > comentário, pergunte a si mesmo, "Como eu posso melhorar o código de maneira que esse
-> comentário não seja necessário?" Melhore e código e então o documente para deixá-lo
+> comentário não seja necessário?" Melhore o código e então o documente para deixá-lo
 > ainda mais claro. <br/>
 > -- Steve McConnell
 
