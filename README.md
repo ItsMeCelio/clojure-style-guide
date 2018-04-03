@@ -1388,7 +1388,8 @@ as small as possible.
 ## Strings
 
 * <a name="prefer-clojure-string-over-interop"></a>
-  Prefer string manipulation functions from `clojure.string` over Java interop or rolling your own.
+  Prefira as funções de manipulação de strings do `clojure.string` do que a
+  interoperabilidade Java ou escrever sua própria.
 <sup>[[link](#prefer-clojure-string-over-interop)]</sup>
 
     ```Clojure
@@ -1399,116 +1400,112 @@ as small as possible.
     (.toUpperCase "bruce")
     ```
 
-## Exceptions
+## Exceções
 
 * <a name="reuse-existing-exception-types"></a>
-  Reuse existing exception types. Idiomatic Clojure code &mdash; when it does
-  throw an exception &mdash; throws an exception of a standard type
-  (e.g. `java.lang.IllegalArgumentException`,
-  `java.lang.UnsupportedOperationException`,
-  `java.lang.IllegalStateException`, `java.io.IOException`).
+  Reutilize os tipos de exceção existentes. O código idiomático Clojure &mdash;
+  quando lança uma exceção &mdash; lança uma exceção de um tipo padrão (por exemplo, `java.lang.IllegalArgumentException`, `java.lang.UnsupportedOperationException`, `java.lang.IllegalStateException`, `java.io.IOException`).
 <sup>[[link](#reuse-existing-exception-types)]</sup>
 
 * <a name="prefer-with-open-over-finally"></a>
-  Favor `with-open` over `finally`.
+  Prefira `with-open` a `finally`.
 <sup>[[link](#prefer-with-open-over-finally)]</sup>
 
 ## Macros
 
 * <a name="dont-write-macro-if-fn-will-do"></a>
-  Don't write a macro if a function will do.
+  Não escreva uma macro se uma função faz o mesmo.
 <sup>[[link](#dont-write-macro-if-fn-will-do)]</sup>
 
 * <a name="write-macro-usage-before-writing-the-macro"></a>
-  Create an example of a macro usage first and the macro afterwards.
+   Crie um exemplo de uso de macro primeiro e depois a macro.
 <sup>[[link](#write-macro-usage-before-writing-the-macro)]</sup>
 
 * <a name="break-complicated-macros"></a>
-  Break complicated macros into smaller functions whenever possible.
+  Quebre as macros complicadas em funções menores sempre que possível.
 <sup>[[link](#break-complicated-macros)]</sup>
 
 * <a name="macros-as-syntactic-sugar"></a>
-  A macro should usually just provide syntactic sugar and the core of
-  the macro should be a plain function. Doing so will improve
-  composability.
+  Uma macro geralmente deve fornecer apenas açúcar sintático e o núcleo da macro
+  deve ser uma função simples. Isso aumentará a composibilidade.
 <sup>[[link](#macros-as-syntactic-sugar)]</sup>
 
 * <a name="syntax-quoted-forms"></a>
-  Prefer syntax-quoted forms over building lists manually.
+  Prefira formulários entre aspas de sintaxe a construir listas manualmente.
 <sup>[[link](#syntax-quoted-forms)]</sup>
 
-## Comments
+## Comentários
 
-> Good code is its own best documentation. As you're about to add a
-> comment, ask yourself, "How can I improve the code so that this
-> comment isn't needed?" Improve the code and then document it to make
-> it even clearer. <br/>
+> Um bom código é sua melhor documentação. Quando estiver prestes a adicionar um
+> comentário, pergunte a si mesmo, "Como eu posso melhorar o código de maneira que esse
+> comentário não seja necessário?" Melhore o código e então o documente para deixá-lo
+> ainda mais claro. <br/>
 > -- Steve McConnell
 
 * <a name="self-documenting-code"></a>
-  Endeavor to make your code as self-documenting as possible.
+  Se esforce para tornar seu código o mais auto-documentável possível.
 <sup>[[link](#self-documenting-code)]</sup>
 
 * <a name="four-semicolons-for-heading-comments"></a>
-  Write heading comments with at least four semicolons.
+  Escreva comentários de cabeçalho com pelo menos quatro ponto e vírgulas.
 <sup>[[link](#four-semicolons-for-heading-comments)]</sup>
 
 * <a name="three-semicolons-for-top-level-comments"></a>
-  Write top-level comments with three semicolons.
+  Escreva comentários top-level com três ponto e vírgulas.
 <sup>[[link](#three-semicolons-for-top-level-comments)]</sup>
 
 * <a name="two-semicolons-for-code-fragment"></a>
-  Write comments on a particular fragment of code before that fragment
-and aligned with it, using two semicolons.
+  Escreva comentários em um fragmento particular de código antes do fragmento
+e alinhado com o mesmo, utilizando dois ponto e vírgulas.
 <sup>[[link](#two-semicolons-for-code-fragment)]</sup>
 
 * <a name="one-semicolon-for-margin-comments"></a>
-  Write margin comments with one semicolon.
+  Escreva comentários de margem com um ponto e vírgula.
 <sup>[[link](#one-semicolon-for-margin-comments)]</sup>
 
 * <a name="semicolon-space"></a>
-  Always have at least one space between the semicolon
-and the text that follows it.
+  Sempre tenha pelo menos um espaço entre o ponto e vírgula
+  e o texto que o segue.
 <sup>[[link](#semicolon-space)]</sup>
 
     ```Clojure
     ;;;; Frob Grovel
 
-    ;;; This section of code has some important implications:
+    ;;; Esse código tem algumas implicações importantes:
     ;;;   1. Foo.
     ;;;   2. Bar.
     ;;;   3. Baz.
 
     (defn fnord [zarquon]
-      ;; If zob, then veeblefitz.
+      ;; Se zob, então veeblefitz.
       (quux zot
             mumble             ; Zibblefrotz.
             frotz))
     ```
 
 * <a name="english-syntax"></a>
-  Comments longer than a word begin with a capital letter and use
-  punctuation. Separate sentences with
-  [one space](http://en.wikipedia.org/wiki/Sentence_spacing).
+  Comentários maiores que uma palavra começam com letra maiúscula e usam
+  pontuação. Sentenças separadas com
+  [um espaço](http://en.wikipedia.org/wiki/Sentence_spacing).
 <sup>[[link](#english-syntax)]</sup>
 
 * <a name="no-superfluous-comments"></a>
-  Avoid superfluous comments.
+  Evite comentários supérfulos.
 <sup>[[link](#no-superfluous-comments)]</sup>
 
     ```Clojure
     ;; ruim
-    (inc counter) ; increments counter by one
+    (inc counter) ; incrementa contador em um
     ```
 
 * <a name="comment-upkeep"></a>
-  Keep existing comments up-to-date. An outdated comment is worse than no comment
-at all.
+  Mantenha os comentários existentes atualizados. Um comentário desatualizado é
+  pior que nenhum comentário.
 <sup>[[link](#comment-upkeep)]</sup>
 
 * <a name="dash-underscore-reader-macro"></a>
-  Prefer the use of the `#_` reader macro over a regular comment when
-you need to comment out a particular form.
+  Prefira o uso do macro leitor `#_` no lugar de um comentário normal quando
+  precisar comentar um formulário específico.
 <sup>[[link](#dash-underscore-reader-macro)]</sup>
 
     ```Clojure
@@ -1521,48 +1518,48 @@ you need to comment out a particular form.
        delta)
     ```
 
-> Good code is like a good joke - it needs no explanation. <br/>
+> Um bom código é como uma boa piada - não precisa de explicação. <br/>
 > -- Russ Olsen
 
 * <a name="refactor-dont-comment"></a>
-  Avoid writing comments to explain bad code. Refactor the code to
-  make it self-explanatory. ("Do, or do not. There is no try." --Yoda)
+  Evite escrever comentários para explicar um código ruim. Refatore o código para
+  torná-lo auto-explicativo. ("Faça ou não faça. Não há tentativa." --Yoda)
 <sup>[[link](#refactor-dont-comment)]</sup>
 
-### Comment Annotations
+### Anotações de Comentários
 
 * <a name="annotate-above"></a>
-  Annotations should usually be written on the line immediately above
-  the relevant code.
+  Anotações devem geralmente ser escritas na linha imediatamente acima da linha
+  do código de relevância.
 <sup>[[link](#annotate-above)]</sup>
 
 * <a name="annotate-keywords"></a>
-  The annotation keyword is followed by a colon and a space, then a note
-  describing the problem.
+  A palavra-chave de anotação é seguida por dois-pontos e um espaço, depois por
+  uma nota descrevendo o problema.
 <sup>[[link](#annotate-keywords)]</sup>
 
 * <a name="indent-annotations"></a>
-  If multiple lines are required to describe the problem, subsequent
-  lines should be indented as much as the first one.
+  Se várias linhas forem necessárias para descrever o problema, as linhas
+  subsequentes deverão ser indentadas tanto quanto a primeira.
 <sup>[[link](#indent-annotations)]</sup>
 
 * <a name="sing-and-date-annotations"></a>
-  Tag the annotation with your initials and a date so its relevance can
-  be easily verified.
+  Marque a anotação com suas iniciais e uma data para que sua relevância possa
+  ser facilmente verificada.
 <sup>[[link](#sing-and-date-annotations)]</sup>
 
     ```Clojure
     (defn some-fun
       []
-      ;; FIXME: This has crashed occasionally since v1.2.3. It may
-      ;;        be related to the BarBazUtil upgrade. (xz 13-1-31)
+      ;; FIXME: Isso quebra ocasionalmente desde v1.2.3. Isso pode
+      ;;        estar relacionado a atualização do BarBazUtil. (xz 13-1-31)
       (baz))
     ```
 
 * <a name="rare-eol-annotations"></a>
-  In cases where the problem is so obvious that any documentation would
-  be redundant, annotations may be left at the end of the offending line
-  with no note. This usage should be the exception and not the rule.
+  Em casos que o problema é tão óbvio que qualquer documentação se tornaria redundante,
+  anotações podem ser deixadas no final da linha ofensiva sem anotações. Esse uso
+  deve ser a exceção e não a regra.
 <sup>[[link](#rare-eol-annotations)]</sup>
 
     ```Clojure
@@ -1572,33 +1569,34 @@ you need to comment out a particular form.
     ```
 
 * <a name="todo"></a>
-  Use `TODO` to note missing features or functionality that should be
-  added at a later date.
+  Use `TODO` para deixar uma observação de recursos ou funcionalidades ausentes
+  que devem ser adicionados posteriormente.
 <sup>[[link](#todo)]</sup>
 
 * <a name="fixme"></a>
-  Use `FIXME` to note broken code that needs to be fixed.
+  Use `FIXME` para deixar uma observação de código quebrado que precisa ser
+  corrigido.
 <sup>[[link](#fixme)]</sup>
 
 * <a name="optimize"></a>
-  Use `OPTIMIZE` to note slow or inefficient code that may cause
-  performance problems.
+  Use `OPTIMIZE` para deixar uma observação de código lento ou ineficiente que pode
+  causar problemas de desempenho.
 <sup>[[link](#optimize)]</sup>
 
 * <a name="hack"></a>
-  Use `HACK` to note "code smells" where questionable coding practices
-  were used and should be refactored away.
+  Use `HACK` para deixar uma observação de to note "code smells" onde práticas de
+  codificação questionáveis foram utilizadas e devem ser refatoradas.
 <sup>[[link](#hack)]</sup>
 
 * <a name="review"></a>
-  Use `REVIEW` to note anything that should be looked at to confirm it
-  is working as intended. For example: `REVIEW: Are we sure this is how the
-  client does X currently?`
+  Use `REVIEW` para deixar uma observação de qualquer coisa que deva ser analisada
+  para confirmar se está funcionando conforme o esperado. Por exemplo: `REVIEW:
+  Temos certeza de que é assim que o cliente faz X atualmente?`
 <sup>[[link](#review)]</sup>
 
 * <a name="document-annotations"></a>
-  Use other custom annotation keywords if it feels appropriate, but be
-  sure to document them in your project's `README` or similar.
+  Use outras palavras-chave de anotação personalizadas se parecer apropriado, mas
+  certifique-se de documentá-las no `README` do seu projeto ou similar.
 <sup>[[link](#document-annotations)]</sup>
 
 ## Existencial
