@@ -1223,82 +1223,82 @@ hints for the pairwise grouping with comments or empty lines.
         * `body` - a macro body
         * `binding` - a macro binding vector
 
-## Collections
+## Coleções
 
-> It is better to have 100 functions operate on one data structure
-> than to have 10 functions operate on 10 data structures. <br/>
+> É melhor ter 100 funções operando em uma estrutura de dados
+> do que ter 10 funções operando em 10 estrutura de dados. <br/>
 > -- Alan J. Perlis
 
 * <a name="avoid-lists"></a>
-  Avoid the use of lists for generic data storage (unless a list is
-  exactly what you need).
+  Evite o uso de listas para armazenamento genérico de dados (a menos que uma seja
+  exatamente o que você precisa).
 <sup>[[link](#avoid-lists)]</sup>
 
 * <a name="keywords-for-hash-keys"></a>
-  Prefer the use of keywords for hash keys.
+  Prefira o uso de keywords para hash keys.
 <sup>[[link](#keywords-for-hash-keys)]</sup>
 
     ```Clojure
     ;; bom
-    {:name "Bruce" :age 30}
+    {:nome "Bruce" :idade 30}
 
     ;; ruim
-    {"name" "Bruce" "age" 30}
+    {"nome" "Bruce" "idade" 30}
     ```
 
 * <a name="literal-col-syntax"></a>
-  Prefer the use of the literal collection syntax where
-  applicable. However, when defining sets, only use literal syntax
-  when the values are compile-time constants.
+  Prefira o uso da sintaxe da coleção literal quando aplicável. No entanto, ao
+  definir conjuntos, apenas use a sintaxe literal quando os valores forem constantes
+  de tempo de compilação.
 <sup>[[link](#literal-col-syntax)]</sup>
 
     ```Clojure
     ;; bom
     [1 2 3]
     #{1 2 3}
-    (hash-set (func1) (func2)) ; values determined at runtime
+    (hash-set (func1) (func2)) ; valores determinados em tempo de execução
 
     ;; ruim
     (vector 1 2 3)
     (hash-set 1 2 3)
-    #{(func1) (func2)} ; will throw runtime exception if (func1) = (func2)
+    #{(func1) (func2)} ; irá lançar exceção de tempo de execução se (func1) = (func2)
     ```
 
 * <a name="avoid-index-based-coll-access"></a>
-  Avoid accessing collection members by index whenever possible.
-<sup>[[link](#avoid-index-based-coll-access)]</sup>
+  Evite acessar os membros da coleção por índice sempre que possível.
+  <sup>[[link](#avoid-index-based-coll-access)]</sup>
 
 * <a name="keywords-as-fn-to-get-map-values"></a>
-  Prefer the use of keywords as functions for retrieving values from
-  maps, where applicable.
+  Prefira o uso de keywords como funções para recuperar valores de mapas,
+  quando aplicável.
 <sup>[[link](#keywords-as-fn-to-get-map-values)]</sup>
 
     ```Clojure
-    (def m {:name "Bruce" :age 30})
+    (def m {:nome "Bruce" :idade 30})
 
     ;; bom
-    (:name m)
+    (:nome m)
 
-    ;; more verbose than necessary
-    (get m :name)
+    ;; mais detalhado que o necessário
+    (get m :nome)
 
-    ;; ruim - susceptible to NullPointerException
-    (m :name)
+    ;; ruim - suscetível a NullPointerException
+    (m :nome)
     ```
 
 * <a name="colls-as-fns"></a>
-  Leverage the fact that most collections are functions of their elements.
+  Aproveite o fato de que a maioria das coleções são funções de seus elementos.
 <sup>[[link](#colls-as-fns)]</sup>
 
     ```Clojure
     ;; bom
-    (filter #{\a \e \o \i \u} "this is a test")
+    (filter #{\a \e \o \i \u} "isso é um teste")
 
-    ;; ruim - too ugly to share
+    ;; ruim - muito feio para compartilhar
     ```
 
 * <a name="keywords-as-fns"></a>
-  Leverage the fact that keywords can be used as functions of a collection.
+  Aproveite o fato de que keywords podem ser usadas como funções de uma coleção.
 <sup>[[link](#keywords-as-fns)]</sup>
 
     ```Clojure
@@ -1306,31 +1306,31 @@ hints for the pairwise grouping with comments or empty lines.
     ```
 
 * <a name="avoid-transient-colls"></a>
-  Avoid the use of transient collections, except for
-performance-critical portions of the code.
+  Evite o uso de coleções transitórias, exceto em partes críticas de desempenho
+   do código.
 <sup>[[link](#avoid-transient-colls)]</sup>
 
 * <a name="avoid-java-colls"></a>
-  Avoid the use of Java collections.
+  Evite o uso de Java collections.
 <sup>[[link](#avoid-java-colls)]</sup>
 
 * <a name="avoid-java-arrays"></a>
-  Avoid the use of Java arrays, except for interop scenarios and
-performance-critical code dealing heavily with primitive types.
+  Evite o uso de arrays de of Java arrays, exceto para cenários de
+  interoperabilidade e código de desempenho crítico lidando fortemente com tipos
+   primitivos.
 <sup>[[link](#avoid-java-arrays)]</sup>
 
-## Mutation
+## Mutação
 
 ### Refs
 
 * <a name="refs-io-macro"></a>
-  Consider wrapping all I/O calls with the `io!` macro to avoid nasty
-surprises if you accidentally end up calling such code in a
-transaction.
+  Considere agrupar todas as chamadas I/O com a macro `io!` para evitar surpresas
+  desagradáveis se acidentalmente acabar chamando esse código em uma transação.
 <sup>[[link](#refs-io-macro)]</sup>
 
 * <a name="refs-avoid-ref-set"></a>
-  Avoid the use of `ref-set` whenever possible.
+  Evite o uso de `ref-set` sempre que possível.
 <sup>[[link](#refs-avoid-ref-set)]</sup>
 
     ```Clojure
@@ -1344,35 +1344,33 @@ transaction.
     ```
 
 * <a name="refs-small-transactions"></a>
-  Try to keep the size of transactions (the amount of work encapsulated in them)
-as small as possible.
+  Tente manter o tamanho das transações (a quantidade de trabalho encapsulado nelas)
+  o menor possível.
 <sup>[[link](#refs-small-transactions)]</sup>
 
 * <a name="refs-avoid-short-long-transactions-with-same-ref"></a>
-  Avoid having both short- and long-running transactions interacting
-  with the same Ref.
+  Evite que transações de curta e longa duração interajam com a mesma Ref.
 <sup>[[link](#refs-avoid-short-long-transactions-with-same-ref)]</sup>
 
-### Agents
+### Agentes
 
 * <a name="agents-send"></a>
-  Use `send` only for actions that are CPU bound and don't block on I/O
-  or other threads.
+  Use `send` somente para ações que são ligadas à CPU e não bloqueiam em I/O
+  ou outras threads.
 <sup>[[link](#agents-send)]</sup>
 
 * <a name="agents-send-off"></a>
-  Use `send-off` for actions that might block, sleep, or otherwise tie
-  up the thread.
+  Use `send-off` para ações que possam bloquear, suspender ou amarrar a thread.
 <sup>[[link](#agents-send-off)]</sup>
 
 ### Atoms
 
 * <a name="atoms-no-update-within-transactions"></a>
-  Avoid atom updates inside STM transactions.
+  Evite atualizações de atom dentro de transações STM.
 <sup>[[link](#atoms-no-update-within-transactions)]</sup>
 
 * <a name="atoms-prefer-swap-over-reset"></a>
-  Try to use `swap!` rather than `reset!`, where possible.
+  Tente usar `swap!` no lugar de `reset!` onde for possível.
 <sup>[[link](#atoms-prefer-swap-over-reset)]</sup>
 
     ```Clojure
