@@ -25,6 +25,8 @@ Traduções deste guia estão disponíveis também nas seguintes linguagens:
 * [Inglês](https://github.com/bbatsov/clojure-style-guide)
 * [Japonês](https://github.com/totakke/clojure-style-guide/blob/ja/README.md)
 * [Coreano](https://github.com/kwakbab/clojure-style-guide/blob/master/README-koKO.md)
+* [Russo](https://github.com/Nondv/clojure-style-guide/blob/master/ru/README.md)
+* [Espanhol](https://github.com/jeko2000/clojure-style-guide/blob/master/README.md)
 
 ## Índice
 
