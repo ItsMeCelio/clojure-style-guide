@@ -28,19 +28,19 @@ Traduções deste guia estão disponíveis também nas seguintes linguagens:
 
 ## Índice
 
-* [Disposição do código & Organização](#source-code-layout--organization)
-* [Sintaxe](#syntax)
-* [Nomenclaturas](#nomenclatura)
+* [Disposição do código & Organização](#disposição-do-código--organização)
+* [Sintaxe](#sintaxe)
+* [Nomenclaturas](#naming)
 * [Collections](#collections)
-* [Mutações](#mutation)
+* [Mutações](#mutações)
 * [Strings](#strings)
-* [Exceções](#exceptions)
+* [Exceções](#exceções)
 * [Macros](#macros)
-* [Comentários](#comments)
+* [Comentários](#comentários)
     * [Comentários de anotações](#comment-annotations)
-* [Existencial](#existential)
-* [Ferramentas](#tooling)
-* [Testando](#testing)
+* [Existencial](#existencial)
+* [Ferramentas](#ferramentas)
+* [Testando](#testando)
 
 ## Disposição do código & Organização
 
@@ -502,7 +502,7 @@ pairwise constructs as found in e.g. `let` and `cond`.
   are rare in practice.
 <sup>[[link](#forward-references)]</sup>
 
-## Syntax
+## Sintaxe
 
 * <a name="ns-fns-only-in-repl"></a>
   Avoid the use of namespace-manipulating functions like `require` and
@@ -1094,7 +1094,7 @@ hints for the pairwise grouping with comments or empty lines.
     (meta #'a) ;=> nil
     ```
 
-## Nomenclatura
+## Nomes
 
 > As únicas reais dificuldades em programação são invalidação de cache e
 > nomear coisas. <br/>
@@ -1223,7 +1223,7 @@ hints for the pairwise grouping with comments or empty lines.
         * `body` - o corpo de uma macro
         * `binding` - um vetor binding de uma macro
 
-## Coleções
+## Collections
 
 > É melhor ter 100 funções operando em uma estrutura de dados
 > do que ter 10 funções operando em 10 estrutura de dados. <br/>
@@ -1320,7 +1320,7 @@ hints for the pairwise grouping with comments or empty lines.
    primitivos.
 <sup>[[link](#avoid-java-arrays)]</sup>
 
-## Mutação
+## Mutações
 
 ### Refs
 
@@ -1623,7 +1623,7 @@ em seu esforço em escrever o código de Clojure idiomático.
   para Clojure que usa [core.logic](https://github.com/clojure/core.logic) para
   procurar padrões de código para os quais pode haver uma função ou macro mais idiomático.
 
-## Testes
+## Testando
 
  * <a name="test-directory-structure"></a>
    Armazene seus testes em um diretório separado, normalmente `test/seuprojeto/` (em
