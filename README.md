@@ -30,7 +30,7 @@ Traduções deste guia estão disponíveis também nas seguintes linguagens:
 
 * [Disposição do código & Organização](#source-code-layout--organization)
 * [Sintaxe](#syntax)
-* [Nomenclaturas](#naming)
+* [Nomenclaturas](#nomenclatura)
 * [Collections](#collections)
 * [Mutações](#mutation)
 * [Strings](#strings)
@@ -1094,7 +1094,7 @@ hints for the pairwise grouping with comments or empty lines.
     (meta #'a) ;=> nil
     ```
 
-## Nomes
+## Nomenclatura
 
 > As únicas reais dificuldades em programação são invalidação de cache e
 > nomear coisas. <br/>
