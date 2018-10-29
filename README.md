@@ -31,21 +31,22 @@ Traduções deste guia estão disponíveis também nas seguintes linguagens:
 
 ## Índice
 
-* [Disposição do código & Organização](#source-code-layout--organization)
-* [Sintaxe](#syntax)
-* [Nomenclaturas](#naming)
+* [Disposição do código & Organização](#disposição-do-código--organização)
+* [Sintaxe](#sintaxe)
+* [Nomenclaturas](#nomenclaturas)
 * [Collections](#collections)
-* [Mutações](#mutation)
+* [Mutações](#mutações)
 * [Strings](#strings)
-* [Exceções](#exceptions)
+* [Exceções](#exceções)
 * [Macros](#macros)
-* [Comentários](#comments)
-    * [Comentários de anotações](#comment-annotations)
-* [Documentação](#documentation)
-* [Existencial](#existential)
-* [Ferramentas](#tooling)
-* [Testando](#testing)
+* [Comentários](#comentários)
+    * [Anotações de Comentários](#anotações-de-comentários)
+* [Existencial](#existencial)
+* [Ferramentas](#ferramentas)
+* [Testando](#testando)
+* [Documentação](#documentação)
 * [Organização das bibliotecas](#library-organization)
+
 
 ## Disposição do código & Organização
 
@@ -466,7 +467,7 @@ pairwise constructs as found in e.g. `let` and `cond`.
   are rare in practice.
 <sup>[[link](#forward-references)]</sup>
 
-## Syntax
+## Sintaxe
 
 * <a name="ns-fns-only-in-repl"></a>
   Avoid the use of namespace-manipulating functions like `require` and
@@ -1058,47 +1059,47 @@ hints for the pairwise grouping with comments or empty lines.
     (meta #'a) ;=> nil
     ```
 
-## Naming
+## Nomenclaturas
 
-> The only real difficulties in programming are cache invalidation and
-> naming things. <br/>
+> As únicas reais dificuldades em programação são invalidação de cache e
+> nomear coisas. <br/>
 > -- Phil Karlton
 
-* <a name="ns-naming-schemas"></a>
-  When naming namespaces favor the following two schemas:
+* <a name="ns-nomeando-schemas"></a>
+  Ao nomear namespaces escolha entre os dois seguintes schemas:
 <sup>[[link](#ns-naming-schemas)]</sup>
 
     * `project.module`
     * `organization.project.module`
 
 * <a name="lisp-case-ns"></a>
-  Use `lisp-case` in composite namespace segments(e.g. `bruce.project-euler`)
+  Use `lisp-case` em segmentos de namespace compostos(e.g. `bruce.project-euler`)
 <sup>[[link](#lisp-case-ns)]</sup>
 
 * <a name="lisp-case"></a>
-  Use `lisp-case` for function and variable names.
+  Use `lisp-case` em funções e nomes de variáveis.
 <sup>[[link](#lisp-case)]</sup>
 
     ```Clojure
     ;; bom
-    (def some-var ...)
-    (defn some-fun ...)
+    (def uma-var ...)
+    (defn uma-fun ...)
 
     ;; ruim
-    (def someVar ...)
-    (defn somefun ...)
-    (def some_fun ...)
+    (def umaVar ...)
+    (defn umafun ...)
+    (def uma_fun ...)
     ```
 
 * <a name="CamelCase-for-protocols-records-structs-and-types"></a>
-  Use `CamelCase` for protocols, records, structs, and types. (Keep
-  acronyms like HTTP, RFC, XML uppercase.)
+  Use `CamelCase` para protocolos, registros, estruturas e tipos. (Mantenha
+   acrônimos como HTTP, RFC, XML em maiúsculo.)
 <sup>[[link](#CamelCase-for-protocols-records-structs-and-types)]</sup>
 
 * <a name="pred-with-question-mark"></a>
-  The names of predicate methods (methods that return a boolean value)
-  should end in a question mark
-  (e.g., `even?`).
+  Os nomes dos métodos predicados (métodos que retornam um valor booleano)
+     devem terminar em um ponto de interrogação
+  (e.g., `impar?`).
 <sup>[[link](#pred-with-question-mark)]</sup>
 
     ```Clojure
@@ -1106,29 +1107,29 @@ hints for the pairwise grouping with comments or empty lines.
     (defn palindrome? ...)
 
     ;; ruim
-    (defn palindrome-p ...) ; Common Lisp style
-    (defn is-palindrome ...) ; Java style
+    (defn palindrome-p ...) ; estilo Common Lisp
+    (defn is-palindrome ...) ; estilo Java
     ```
 
 * <a name="changing-state-fns-with-exclamation-mark"></a>
-  The names of functions/macros that are not safe in STM transactions
-  should end with an exclamation mark (e.g. `reset!`).
+  Os nomes de funções/macros que não são "safe" em transações STM
+  devem terminar com uma ponto de exclamação (e.g. `reset!`).
 <sup>[[link](#changing-state-fns-with-exclamation-mark)]</sup>
 
 * <a name="arrow-instead-of-to"></a>
-  Use `->` instead of `to` in the names of conversion functions.
+  Use `->` no lugar de `to` ao nomear funções de conversão.
 <sup>[[link](#arrow-instead-of-to)]</sup>
 
     ```Clojure
     ;; bom
     (defn f->c ...)
 
-    ;; not so good
+    ;; não muito bom
     (defn f-to-c ...)
     ```
 
 * <a name="earmuffs-for-dynamic-vars"></a>
-  Use `*earmuffs*` for things intended for rebinding (ie. are dynamic).
+  Use `*earmuffs*` para coisas destinatas a rebinding (ou seja, são dinâmicas).
 <sup>[[link](#earmuffs-for-dynamic-vars)]</sup>
 
     ```Clojure
@@ -1140,13 +1141,13 @@ hints for the pairwise grouping with comments or empty lines.
     ```
 
 * <a name="dont-flag-constants"></a>
-  Don't use a special notation for constants; everything is assumed a constant
-  unless specified otherwise.
+  Não use notações especiais para constantes; tudo é constante
+  a não ser que seja especificado do contrário.
 <sup>[[link](#dont-flag-constants)]</sup>
 
 * <a name="underscore-for-unused-bindings"></a>
-  Use `_` for destructuring targets and formal argument names whose
-  value will be ignored by the code at hand.
+  Use `_` para destructuring e nomes formais para argumentos que terão
+  seus valores ignorado pelo código em mãos.
 <sup>[[link](#underscore-for-unused-bindings)]</sup>
 
     ```Clojure
@@ -1166,28 +1167,28 @@ hints for the pairwise grouping with comments or empty lines.
     ```
 
 * <a name="idiomatic-names"></a>
-  Follow `clojure.core`'s example for idiomatic names like `pred` and `coll`.
+  Siga o exemplo `clojure.core`'s para nomes idiomáticos como `pred` e `coll`.
 <sup>[[link](#idiomatic-names)]</sup>
 
-    * in functions:
-        * `f`, `g`, `h` - function input
-        * `n` - integer input usually a size
-        * `index`, `i` - integer index
-        * `x`, `y` - numbers
-        * `xs` - sequence
+    * em funções:
+        * `f`, `g`, `h` - input da função
+        * `n` - input inteiro, normalmente tamanho
+        * `index`, `i` - index inteiro
+        * `x`, `y` - números
+        * `xs` - sequência
         * `m` - map
-        * `s` - string input
-        * `re` - regular expression
-        * `coll` - a collection
-        * `pred` - a predicate closure
-        * `& more` - variadic input
-        * `xf` - xform, a transducer
-    * in macros:
-        * `expr` - an expression
-        * `body` - a macro body
-        * `binding` - a macro binding vector
+        * `s` - input string
+        * `re` - expressão regular
+        * `coll` - uma coleção
+        * `pred` - um fechamento de predicado
+        * `& more` - input variante
+        * `xf` - xform, um transducer
+    * em macros:
+        * `expr` - uma expressão
+        * `body` - o corpo de uma macro
+        * `binding` - um vetor binding de uma macro
 
-## Coleções
+## Collections
 
 > É melhor ter 100 funções operando em uma estrutura de dados
 > do que ter 10 funções operando em 10 estrutura de dados. <br/>
@@ -1284,7 +1285,7 @@ hints for the pairwise grouping with comments or empty lines.
    primitivos.
 <sup>[[link](#avoid-java-arrays)]</sup>
 
-## Mutação
+## Mutações
 
 ### Refs
 
@@ -1818,7 +1819,7 @@ em seu esforço em escrever o código de Clojure idiomático.
   para Clojure que usa [core.logic](https://github.com/clojure/core.logic) para
   procurar padrões de código para os quais pode haver uma função ou macro mais idiomático.
 
-## Testes
+## Testando
 
  * <a name="test-directory-structure"></a>
    Armazene seus testes em um diretório separado, normalmente `test/seuprojeto/` (em
