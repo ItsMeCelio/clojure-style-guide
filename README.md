@@ -571,7 +571,7 @@ pairwise constructs as found in e.g. `let` and `cond`.
     ```
 
 * <a name="when-instead-of-single-branch-if"></a>
-  Use `when` no lugar de `(if ... (do ...))`.
+  Use `when` instead of `(if ... (do ...))`.
 <sup>[[link](#when-instead-of-single-branch-if)]</sup>
 
     ```Clojure
@@ -652,7 +652,7 @@ pairwise constructs as found in e.g. `let` and `cond`.
     ```
 
 * <a name="when-not-instead-of-single-branch-if-not"></a>
-  Use `when-not` no lugar de `(if-not ... (do ...))`.
+  Use `when-not` instead of `(if-not ... (do ...))`.
 <sup>[[link](#when-not-instead-of-single-branch-if-not)]</sup>
 
     ```Clojure
