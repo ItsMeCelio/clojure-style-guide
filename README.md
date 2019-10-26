@@ -470,22 +470,22 @@ pairwise constructs as found in e.g. `let` and `cond`.
 ## Sintaxe
 
 * <a name="ns-fns-only-in-repl"></a>
-  Avoid the use of namespace-manipulating functions like `require` and
-  `refer`. They are entirely unnecessary outside of a REPL
-  environment.
+  Evite o uso de funções de manipulação de namespace como `require` e
+  `refer`. Elas são desnecessárias fora do ambiente REPL.
 <sup>[[link](#ns-fns-only-in-repl)]</sup>
 
 * <a name="declare"></a>
-  Use `declare` to enable forward references when forward references are
-  necessary.
+  Use `declare` para habilitar referências futuras quando elas forem
+  necessárias.
 <sup>[[link](#declare)]</sup>
 
 * <a name="higher-order-fns"></a>
-  Prefer higher-order functions like `map` to `loop/recur`.
+  Prefira funções de alta ordem como `map` no lugar de `loop/recur`.
 <sup>[[link](#higher-order-fns)]</sup>
 
 * <a name="pre-post-conditions"></a>
-  Prefer function pre and post conditions to checks inside a function's body.
+  Prefira funções de pre e pos condições para fazer checagens
+  dentro do corpo de uma função.
 <sup>[[link](#pre-post-conditions)]</sup>
 
     ```Clojure
@@ -498,50 +498,50 @@ pairwise constructs as found in e.g. `let` and `cond`.
     (defn foo [x]
       (if (pos? x)
         (bar x)
-        (throw (IllegalArgumentException. "x must be a positive number!")))
+        (throw (IllegalArgumentException. "x deve ser um número positivo!")))
     ```
 
 * <a name="dont-def-vars-inside-fns"></a>
-  Don't define vars inside functions.
+  Não defina variáveis dentro de funções.
 <sup>[[link](#dont-def-vars-inside-fns)]</sup>
 
     ```Clojure
-    ;; very bad
+    ;; muito ruim
     (defn foo []
       (def x 5)
       ...)
     ```
 
 * <a name="dont-shadow-clojure-core"></a>
-  Don't shadow `clojure.core` names with local bindings.
+  Não sobrescreva nomes `clojure.core` com atribuições locais.
 <sup>[[link](#dont-shadow-clojure-core)]</sup>
 
     ```Clojure
-    ;; ruim - you're forced to use clojure.core/map fully qualified inside
+    ;; ruim - você é forçado a usar clojure.core/map com todo namespace
     (defn foo [map]
       ...)
     ```
 
 * <a name="alter-var"></a>
-  Use `alter-var-root` instead of `def` to change the value of a var.
+  Use `alter-var-root` no lugar de `def` para alterar o valor de variáveis.
 <sup>[[link]](#alter-var)</sup>
 
     ```Clojure
     ;; bom
-    (def thing 1) ; value of thing is now 1
-    ; do some stuff with thing
-    (alter-var-root #'thing (constantly nil)) ; value of thing is now nil
+    (def variável 1) ; o valor de coisa agora é 1
+    ; faz algo com variável
+    (alter-var-root #'variável (constantly nil)) ; valor de variável agora é nil
 
     ;; ruim
-    (def thing 1)
-    ; do some stuff with thing
-    (def thing nil)
-    ; value of thing is now nil
+    (def variável 1)
+    ; faz algo com variável
+    (def variável nil)
+    ; valor de variável é nil agora
     ```
 
 * <a name="nil-punning"></a>
-  Use `seq` as a terminating condition to test whether a sequence is
-  empty (this technique is sometimes called *nil punning*).
+  Use `seq` como uma condição terminal para verificar quando uma sequência
+  é vazia (essa técnica é as vezes chamada de *nil punning*).
 <sup>[[link](#nil-punning)]</sup>
 
     ```Clojure
@@ -559,15 +559,15 @@ pairwise constructs as found in e.g. `let` and `cond`.
     ```
 
 * <a name="to-vector"></a>
-  Prefer `vec` over `into` when you need to convert a sequence into a vector.
+  Prefira `vec` no lugar de `into` que precisar converter uma sequância em um vetor.
 <sup>[[link](#to-vector)]</sup>
 
     ```Clojure
     ;; bom
-    (vec some-seq)
+    (vec uma-seq)
 
     ;; ruim
-    (into [] some-seq)
+    (into [] uma-seq)
     ```
 
 * <a name="when-instead-of-single-branch-if"></a>
@@ -588,41 +588,41 @@ pairwise constructs as found in e.g. `let` and `cond`.
     ```
 
 * <a name="if-let"></a>
-  Use `if-let` instead of `let` + `if`.
+  Use `if-let` no lugar de `let` + `if`.
 <sup>[[link](#if-let)]</sup>
 
     ```Clojure
     ;; bom
-    (if-let [result (foo x)]
-      (something-with result)
-      (something-else))
+    (if-let [resultado (foo x)]
+      (algo-com resultado)
+      (oura-coisa))
 
     ;; ruim
-    (let [result (foo x)]
-      (if result
-        (something-with result)
-        (something-else)))
+    (let [resultado (foo x)]
+      (if resultado
+        (algo-com resultado)
+        (outra-coisa)))
     ```
 
 * <a name="when-let"></a>
-  Use `when-let` instead of `let` + `when`.
+  Use `when-let` no lugar de `let` + `when`.
 <sup>[[link](#when-let)]</sup>
 
     ```Clojure
     ;; bom
-    (when-let [result (foo x)]
-      (do-something-with result)
-      (do-something-more-with result))
+    (when-let [resultado (foo x)]
+      (faz-algo-com resultado)
+      (faz-algo-mais-com resultado))
 
     ;; ruim
-    (let [result (foo x)]
-      (when result
-        (do-something-with result)
-        (do-something-more-with result)))
+    (let [resultado (foo x)]
+      (when resultado
+        (faz-algo-com resultado)
+        (faz-algo-mais-com resultado)))
     ```
 
 * <a name="if-not"></a>
-  Use `if-not` instead of `(if (not ...) ...)`.
+  Use `if-not` no lugar de `(if (not ...) ...)`.
 <sup>[[link](#if-not)]</sup>
 
     ```Clojure
@@ -636,7 +636,7 @@ pairwise constructs as found in e.g. `let` and `cond`.
     ```
 
 * <a name="when-not"></a>
-  Use `when-not` instead of `(when (not ...) ...)`.
+  Use `when-not` no lugar de `(when (not ...) ...)`.
 <sup>[[link](#when-not)]</sup>
 
     ```Clojure
@@ -669,7 +669,7 @@ pairwise constructs as found in e.g. `let` and `cond`.
     ```
 
 * <a name="not-equal"></a>
-  Use `not=` instead of `(not (= ...))`.
+  Use `not=` no lugar de `(not (= ...))`.
 <sup>[[link](#not-equal)]</sup>
 
     ```Clojure
@@ -681,20 +681,20 @@ pairwise constructs as found in e.g. `let` and `cond`.
     ```
 
 * <a name="printf"></a>
-  Use `printf` instead of `(print (format ...))`.
+  Use `printf` no lugar de `(print (format ...))`.
 <sup>[[link](#printf)]</sup>
 
     ```Clojure
     ;; bom
-    (printf "Hello, %s!\n" name)
+    (printf "Olá, %s!\n" nome)
 
     ;; ok
-    (println (format "Hello, %s!" name))
+    (println (format "Olá, %s!" nome))
     ```
 
 * <a name="multiple-arity-of-gt-and-ls-fns"></a>
-  When doing comparisons, keep in mind that Clojure's functions `<`,
-  `>`, etc. accept a variable number of arguments.
+  Quando fizer comparações, tenha em mente que as funções Clojure `<`,
+  `>`, etc. aceitam um número variável de argumentos.
 <sup>[[link](#multiple-arity-of-gt-and-ls-fns)]</sup>
 
     ```Clojure
@@ -706,7 +706,7 @@ pairwise constructs as found in e.g. `let` and `cond`.
     ```
 
 * <a name="single-param-fn-literal"></a>
-  Prefer `%` over `%1` in function literals with only one parameter.
+  Prefira `%` no lugar de `%1` nos argumentos de funções com apenas um parâmetro.
 <sup>[[link](#single-param-fn-literal)]</sup>
 
     ```Clojure
@@ -718,7 +718,7 @@ pairwise constructs as found in e.g. `let` and `cond`.
     ```
 
 * <a name="multiple-params-fn-literal"></a>
-  Prefer `%1` over `%` in function literals with more than one parameter.
+  Prefira `%1` no lugar de `%` nos argumentos de funções com mais de um parâmetro.
 <sup>[[link](#multiple-params-fn-literal)]</sup>
 
     ```Clojure
@@ -730,7 +730,7 @@ pairwise constructs as found in e.g. `let` and `cond`.
     ```
 
 * <a name="no-useless-anonymous-fns"></a>
-  Don't wrap functions in anonymous functions when you don't need to.
+  Não envolva funções com funções anônimas sem necessidade.
 <sup>[[link](#no-useless-anonymous-fns)]</sup>
 
     ```Clojure
@@ -742,8 +742,8 @@ pairwise constructs as found in e.g. `let` and `cond`.
     ```
 
 * <a name="no-multiple-forms-fn-literals"></a>
-  Don't use function literals if the function body will consist of
-  more than one form.
+  Não use literais de uma função se o corpo da função vai consistir em
+  mais de uma chamada.
 <sup>[[link](#no-multiple-forms-fn-literals)]</sup>
 
     ```Clojure
@@ -752,13 +752,13 @@ pairwise constructs as found in e.g. `let` and `cond`.
       (println x)
       (* x 2))
 
-    ;; ruim (you need an explicit do form)
+    ;; ruim (você precisa explicitamente de uma chamada do)
     #(do (println %)
          (* % 2))
     ```
 
 * <a name="complement"></a>
-  Favor the use of `complement` versus the use of an anonymous function.
+  Prefira o uso de `complement` no lugar de uma função anônima.
 <sup>[[link](#complement)]</sup>
 
     ```Clojure
@@ -769,38 +769,38 @@ pairwise constructs as found in e.g. `let` and `cond`.
     (filter #(not (some-pred? %)) coll)
     ```
 
-    This rule should obviously be ignored if the complementing predicate
-    exists in the form of a separate function (e.g. `even?` and `odd?`).
+    Essa regra deve obviamente ser ignorada se já existir uma função que
+    faz o mesmo que usar o complemento (e.g. `even?` e `odd?`).
 
 * <a name="comp"></a>
-  Leverage `comp` when doing so yields simpler code.
+  Usar `comp` pode deixar o código mais simples.
 <sup>[[link](#comp)]</sup>
 
     ```Clojure
-    ;; Assuming `(:require [clojure.string :as str])`...
+    ;; Assumindo `(:require [clojure.string :as str])`...
 
     ;; bom
     (map #(str/capitalize (str/trim %)) ["top " " test "])
 
-    ;; better
+    ;; melhor
     (map (comp str/capitalize str/trim) ["top " " test "])
     ```
 
 * <a name="partial"></a>
-  Leverage `partial` when doing so yields simpler code.
+  Usar `partial` pode deixar o código mais simples.
 <sup>[[link](#partial)]</sup>
 
     ```Clojure
     ;; bom
     (map #(+ 5 %) (range 1 10))
 
-    ;; (arguably) better
+    ;; (dicutivelmente) melhor
     (map (partial + 5) (range 1 10))
     ```
 
 * <a name="threading-macros"></a>
-  Prefer the use of the threading macros `->` (thread-first) and `->>`
-(thread-last) to heavy form nesting.
+  Prefira o uso de threading macros `->` (thread-first) e `->>`
+(thread-last) no lugar de aninhamentos exaustivos.
 <sup>[[link](#threading-macros)]</sup>
 
     ```Clojure
@@ -810,7 +810,7 @@ pairwise constructs as found in e.g. `let` and `cond`.
         (conj 4)
         prn)
 
-    ;; not as good
+    ;; não muito bom
     (prn (conj (reverse [1 2 3])
                4))
 
@@ -819,112 +819,111 @@ pairwise constructs as found in e.g. `let` and `cond`.
          (filter even?)
          (map (partial * 2)))
 
-    ;; not as good
+    ;; não muito bom
     (map (partial * 2)
          (filter even? (range 1 10)))
     ```
 
 * <a name="else-keyword-in-cond"></a>
-  Use `:else` as the catch-all test expression in `cond`.
+  Use `:else` como um teste de experessão catch-all em `cond`.
 <sup>[[link](#else-keyword-in-cond)]</sup>
 
     ```Clojure
     ;; bom
     (cond
-      (neg? n) "negative"
-      (pos? n) "positive"
+      (neg? n) "negativo"
+      (pos? n) "positivo"
       :else "zero")
 
     ;; ruim
     (cond
-      (neg? n) "negative"
-      (pos? n) "positive"
+      (neg? n) "negativo"
+      (pos? n) "positivo"
       true "zero")
     ```
 
 * <a name="condp"></a>
-  Prefer `condp` instead of `cond` when the predicate & expression don't
-  change.
+  Prefira `condp` no lugar de `cond` quando o predicado e expressão não mudarem.
 <sup>[[link](#condp)]</sup>
 
     ```Clojure
     ;; bom
     (cond
-      (= x 10) :ten
-      (= x 20) :twenty
-      (= x 30) :thirty
-      :else :dunno)
+      (= x 10) :dez
+      (= x 20) :vinte
+      (= x 30) :trinta
+      :else :nao-sei)
 
-    ;; much better
+    ;; muito melhor
     (condp = x
-      10 :ten
-      20 :twenty
-      30 :thirty
-      :dunno)
+      10 :dez
+      20 :vinte
+      30 :trinta
+      :nao-sei)
     ```
 
 * <a name="case"></a>
-  Prefer `case` instead of `cond` or `condp` when test expressions are
-compile-time constants.
+  Prefira `case` no lugar de `cond` ou `condp` quando expressões de checagens são
+  constantes de tempo de compilação.
 <sup>[[link](#case)]</sup>
 
     ```Clojure
     ;; bom
     (cond
-      (= x 10) :ten
-      (= x 20) :twenty
-      (= x 30) :forty
-      :else :dunno)
+      (= x 10) :dez
+      (= x 20) :vinte
+      (= x 30) :trinta
+      :else :nao-sei)
 
-    ;; better
+    ;; melhor que anterior
     (condp = x
-      10 :ten
-      20 :twenty
-      30 :forty
-      :dunno)
+      10 :dez
+      20 :vinte
+      30 :trinta
+      :nao-sei)
 
-    ;; best
+    ;; melhor caso
     (case x
-      10 :ten
-      20 :twenty
-      30 :forty
-      :dunno)
+      10 :dez
+      20 :vinte
+      30 :trinta
+      :nao-sei)
     ```
 
 * <a name="shor-forms-in-cond"></a>
-  Use short forms in `cond` and related.  If not possible give visual
-hints for the pairwise grouping with comments or empty lines.
+  Use formas curtas no `cond` e similares. Se não for possível dê dicar visuais
+para as assosiações com comentário ou linhas em branco.
 <sup>[[link](#shor-forms-in-cond)]</sup>
 
     ```Clojure
     ;; bom
     (cond
-      (test1) (action1)
-      (test2) (action2)
-      :else   (default-action))
+      (test1) (acao-1)
+      (test2) (acao-2)
+      :else   (action-padrao))
 
-    ;; ok-ish
+    ;; ok
     (cond
-      ;; test case 1
+      ;; test caso 1
       (test1)
-      (long-function-name-which-requires-a-new-line
-        (complicated-sub-form
-          (-> 'which-spans multiple-lines)))
+      (funcao-com-nome-longo-que-requer-uma-nova-linha
+        (sub-forma-complicada
+          (-> 'que-abrange multiplas-linhas)))
 
-      ;; test case 2
+      ;; test caso 2
       (test2)
-      (another-very-long-function-name
-        (yet-another-sub-form
-          (-> 'which-spans multiple-lines)))
+      (outra-funcao-de-nome-grande
+        (outra-sub-forma
+          (-> 'que-abrange multiplas-linhas)))
 
       :else
-      (the-fall-through-default-case
-        (which-also-spans 'multiple
-                          'lines)))
+      (o-caso-padrao
+        (que-tambem-abrange 'multiplas
+                            'linhas)))
     ```
 
 * <a name="set-as-predicate"></a>
-  Use a `set` as a predicate when appropriate.
+  Use um `set` como predicado quando apropriado.
 <sup>[[link](#set-as-predicate)]</sup>
 
     ```Clojure
@@ -947,16 +946,16 @@ hints for the pairwise grouping with comments or empty lines.
     ```
 
 * <a name="inc-and-dec"></a>
-  Use `(inc x)` & `(dec x)` instead of `(+ x 1)` and `(- x 1)`.
+  Use `(inc x)` & `(dec x)` no lugar de `(+ x 1)` e `(- x 1)`.
 <sup>[[link](#inc-and-dec)]</sup>
 
 * <a name="pos-and-neg"></a>
-  Use `(pos? x)`, `(neg? x)` & `(zero? x)` instead of `(> x 0)`,
+  Use `(pos? x)`, `(neg? x)` & `(zero? x)` no lugar de `(> x 0)`,
 `(< x 0)` & `(= x 0)`.
 <sup>[[link](#pos-and-neg)]</sup>
 
 * <a name="list-star-instead-of-nested-cons"></a>
-  Use `list*` instead of a series of nested `cons` invocations.
+  Use `list*` no lugar de uma serie de chamadas `cons` aninhadas.
 <sup>[[link](#list-star-instead-of-nested-cons)]</sup>
 
     ```Clojure
@@ -968,49 +967,49 @@ hints for the pairwise grouping with comments or empty lines.
     ```
 
 * <a name="sugared-java-interop"></a>
-  Use the sugared Java interop forms.
+  Use os formulários de interoperabilidade Java.
 <sup>[[link](#sugared-java-interop)]</sup>
 
     ```Clojure
-    ;;; object creation
+    ;;; criação do objeto
     ;; bom
     (java.util.ArrayList. 100)
 
     ;; ruim
     (new java.util.ArrayList 100)
 
-    ;;; static method invocation
+    ;;; chamada de método estático
     ;; bom
     (Math/pow 2 10)
 
     ;; ruim
     (. Math pow 2 10)
 
-    ;;; instance method invocation
+    ;;; chamada de instância de método
     ;; bom
-    (.substring "hello" 1 3)
+    (.substring "ola" 1 3)
 
     ;; ruim
-    (. "hello" substring 1 3)
+    (. "ola" substring 1 3)
 
-    ;;; static field access
+    ;;; acesso a campo estático
     ;; bom
     Integer/MAX_VALUE
 
     ;; ruim
     (. Integer MAX_VALUE)
 
-    ;;; instance field access
+    ;;; acesso a instância de campo
     ;; bom
-    (.someField some-object)
+    (.umCampo um-objeto)
 
     ;; ruim
-    (. some-object someField)
+    (. um-objeto umObjeto)
     ```
 
 * <a name="compact-metadata-notation-for-true-flags"></a>
-  Use the compact metadata notation for metadata that contains only
-  slots whose keys are keywords and whose value is boolean `true`.
+  Use a notação compacta de metadado para metadados de contém apenas
+  slots em que as keys são keywords e o valor é booleano `true`.
 <sup>[[link](#compact-metadata-notation-for-true-flags)]</sup>
 
     ```Clojure
@@ -1022,38 +1021,38 @@ hints for the pairwise grouping with comments or empty lines.
     ```
 
 * <a name="private"></a>
-  Denote private parts of your code.
+  Denote partes privadas do seu código.
 <sup>[[link](#private)]</sup>
 
     ```Clojure
     ;; bom
-    (defn- private-fun [] ...)
+    (defn- funcao-privada [] ...)
 
-    (def ^:private private-var ...)
+    (def ^:private variavel-privada ...)
 
     ;; ruim
-    (defn private-fun [] ...) ; not private at all
+    (defn funcao-privda [] ...) ; Não é uma função privada
 
-    (defn ^:private private-fun [] ...) ; overly verbose
+    (defn ^:private funcao-privada [] ...) ; muito verbosa
 
-    (def private-var ...) ; not private at all
+    (def variavel-privada ...) ; Não é privada
     ```
 
 * <a name="access-private-var"></a>
-  To access a private var (e.g. for testing), use the `@#'some.ns/var` form.
+  Para acessar uma variável privada (e.g. para testes), use a notação `@#'some.ns/var`.
 <sup>[[link](#access-private-var)]</sup>
 
 * <a name="attach-metadata-carefully"></a>
-  Be careful regarding what exactly do you attach metadata to.
+  Tenha cuidado ao que você associa seu metadado exatamente.
 <sup>[[link](#attach-metadata-carefully)]</sup>
 
     ```Clojure
-    ;; we attach the metadata to the var referenced by `a`
+    ;; nós associamos o metadado a variável referenciada por `a`
     (def ^:private a {})
     (meta a) ;=> nil
     (meta #'a) ;=> {:private true}
 
-    ;; we attach the metadata to the empty hash-map value
+    ;; nós associamos o metadado ao valor vazio do hash-map
     (def a ^:private {})
     (meta a) ;=> {:private true}
     (meta #'a) ;=> nil
